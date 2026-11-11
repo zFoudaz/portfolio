@@ -54,7 +54,8 @@ describe('PortfolioChat interactive flow', () => {
 
   it('ignores whitespace-only input and handles unmatched freeform questions gracefully', () => {
     render(<PortfolioChat />);
-    const input = screen.getByPlaceholderText(/Ask a question or click any topic above/i);
+    expect(screen.getByTestId('floating-chatbar')).toBeInTheDocument();
+    const input = screen.getByPlaceholderText(/Ask Ziyad anything/i);
     const form = input.closest('form')!;
 
     fireEvent.change(input, { target: { value: '   ' } });
