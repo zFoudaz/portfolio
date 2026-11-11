@@ -18,6 +18,9 @@ export function Header({ onContactClick }: { onContactClick: () => void }): Reac
       if (saved === 'dark') {
         document.documentElement.classList.add('dark');
         setIsDark(true);
+      } else {
+        document.documentElement.classList.remove('dark');
+        setIsDark(false);
       }
     } catch {}
   }, []);
@@ -39,13 +42,13 @@ export function Header({ onContactClick }: { onContactClick: () => void }): Reac
   };
 
   return (
-    <header className="sticky top-0 flex-none bg-white/95 dark:bg-[#141414]/95 backdrop-blur-md border-b-2 border-black dark:border-[#333333] z-30 transition-colors">
+    <header className="sticky top-0 flex-none bg-white/95 backdrop-blur-md border-b-2 border-black z-30 transition-colors">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <Avatar size="md" />
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-black text-base tracking-tight text-black dark:text-white">
+              <span className="font-black text-base tracking-tight text-black">
                 {profile.name}
               </span>
               <span
@@ -53,7 +56,7 @@ export function Header({ onContactClick }: { onContactClick: () => void }): Reac
                 title="Available for AI Engineering roles"
               />
             </div>
-            <div className="text-xs text-[#333333] dark:text-[#AAAAAA] font-medium">
+            <div className="text-xs text-[#333333] font-medium">
               {profile.headerSubtitle}
             </div>
           </div>
@@ -65,7 +68,7 @@ export function Header({ onContactClick }: { onContactClick: () => void }): Reac
             onClick={toggleDarkMode}
             aria-label="Toggle dark mode"
             title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            className="p-2 rounded-full bg-[#F5F5F5] dark:bg-[#242424] hover:bg-[#DCDCDC] dark:hover:bg-[#333333] text-black dark:text-white border border-black dark:border-[#444444] transition-colors cursor-pointer"
+            className="p-2 rounded-full bg-[#F5F5F5] hover:bg-[#DCDCDC] text-black border border-black transition-colors cursor-pointer"
           >
             {isDark ? <Sun className="w-4 h-4 text-yellow-400" /> : <Moon className="w-4 h-4" />}
           </button>
