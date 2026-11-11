@@ -6,8 +6,15 @@ import { Header } from './Header';
 import { BottomDock } from './BottomDock';
 import { Avatar } from './Avatar';
 import { TopicCardRenderer } from './cards/TopicCardRenderer';
-import { TOPIC_OPTIONS, matchTopicFromInput } from '@/data/portfolioData';
+import { TOPIC_OPTIONS, PORTFOLIO_DATA, matchTopicFromInput } from '@/data/portfolioData';
 import { TopicId, ChatMessageItem } from '@/types/portfolio';
+
+const STARTER_PROMPTS = [
+  'Tell me about GenLearn & LangGraph',
+  'Show me your 4 AI internships',
+  'What is your AI tech stack?',
+  'How can we connect?',
+];
 
 export function PortfolioChat(): React.JSX.Element {
   const [messages, setMessages] = useState<ChatMessageItem[]>([]);
@@ -128,25 +135,86 @@ export function PortfolioChat(): React.JSX.Element {
             className="flex items-start gap-3"
           >
             <Avatar size="sm" />
-            <div className="space-y-4 max-w-2xl w-full">
-              <div className="bg-white p-5 sm:p-6 rounded-2xl rounded-tl-sm border-2 border-black shadow-sm space-y-3">
-                <div className="flex items-center gap-2">
-                  <span className="px-2 py-0.5 rounded bg-black text-white text-[10px] font-mono font-bold">
-                    SYSTEM ONLINE
-                  </span>
-                  <span className="text-xs text-[#666666]">Portfolio Chatbot Assistant</span>
+            <div className="space-y-4 max-w-3xl w-full">
+              <div className="bg-white p-6 sm:p-7 rounded-2xl rounded-tl-sm border-2 border-black shadow-sm space-y-4">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <span className="px-2 py-0.5 rounded bg-black text-white text-[10px] font-mono font-bold">
+                      SYSTEM ONLINE
+                    </span>
+                    <span className="text-xs text-[#666666] font-medium">
+                      Portfolio AI Assistant
+                    </span>
+                  </div>
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#00AA44]/15 text-[#008833] text-[11px] font-bold border border-[#00AA44]/40">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00AA44]" />
+                    <span>Available for AI Engineering Roles</span>
+                  </div>
                 </div>
-                <p className="text-sm sm:text-base font-semibold text-black">
-                  Welcome to my portfolio! I’m{' '}
-                  <strong className="text-[#ED1C24]">Ziyad Fouda</strong>, AI Engineer and Computer
-                  Engineering graduate.
-                </p>
+
+                <div className="space-y-1">
+                  <h1 className="text-xl sm:text-2xl font-black text-black tracking-tight">
+                    Hey! I’m <span className="text-[#ED1C24]">{PORTFOLIO_DATA.profile.name}</span> 👋
+                  </h1>
+                  <p className="text-xs sm:text-sm font-bold text-[#333333]">
+                    AI Engineer &amp; Computer Engineering Graduate (GPA 3.7 • High Honors)
+                  </p>
+                </div>
+
                 <p className="text-sm text-[#333333] leading-relaxed">
-                  Click any topic in the bottom dock (<strong>Me</strong>,{' '}
-                  <strong>Projects</strong>, <strong>Skills</strong>, <strong>Fun</strong>, or{' '}
-                  <strong>Contact</strong>) to render it right here in our conversation, or type a
-                  question in the prompt bar below.
+                  I build production LLM applications, multi-agent <strong>LangGraph</strong>{' '}
+                  workflows, and grounded <strong>RAG</strong> pipelines. Explore my work using the
+                  topic buttons in the dock below, or ask a question directly in the chat!
                 </p>
+
+                {/* Quick Action Links */}
+                <div className="flex flex-wrap items-center gap-2.5 pt-1">
+                  <a
+                    href={PORTFOLIO_DATA.profile.resumeUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    download
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-black hover:bg-[#ED1C24] text-white text-xs font-bold border-[1.5px] border-black transition-colors shadow-sm"
+                  >
+                    <span>📄</span>
+                    <span>Download CV (PDF)</span>
+                  </a>
+                  <a
+                    href={PORTFOLIO_DATA.profile.githubUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#F5F5F5] hover:bg-[#DCDCDC] text-black text-xs font-bold border-[1.5px] border-black transition-colors"
+                  >
+                    <span>GitHub</span>
+                  </a>
+                  <a
+                    href={PORTFOLIO_DATA.profile.linkedinUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#F5F5F5] hover:bg-[#DCDCDC] text-black text-xs font-bold border-[1.5px] border-black transition-colors"
+                  >
+                    <span>LinkedIn</span>
+                  </a>
+                </div>
+
+                {/* Starter Prompts */}
+                <div className="pt-3 border-t border-[#DCDCDC] space-y-2">
+                  <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#666666]">
+                    Try Asking:
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {STARTER_PROMPTS.map((prompt) => (
+                      <button
+                        key={prompt}
+                        type="button"
+                        onClick={() => handleCustomSubmit(prompt)}
+                        className="text-left px-3 py-1.5 rounded-full bg-[#F5F5F5] hover:bg-black hover:text-white text-black text-xs font-semibold border border-black transition-all active:scale-95 cursor-pointer"
+                      >
+                        “{prompt}”
+                      </button>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>

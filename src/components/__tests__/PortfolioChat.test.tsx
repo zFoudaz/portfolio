@@ -12,9 +12,14 @@ describe('PortfolioChat interactive flow', () => {
     vi.useRealTimers();
   });
 
-  it('renders only the intro welcome message initially (no topic cards pre-rendered) with profile avatar', () => {
+  it('renders the upgraded hero welcome card initially with Download CV link and starter prompt chips', () => {
     render(<PortfolioChat />);
     expect(screen.getByText(/SYSTEM ONLINE/i)).toBeInTheDocument();
+    expect(screen.getByText(/Available for AI Engineering Roles/i)).toBeInTheDocument();
+    const cvLink = screen.getByRole('link', { name: /Download CV \(PDF\)/i });
+    expect(cvLink).toHaveAttribute('href', '/Ziyad_Fouda_Resume.pdf');
+    expect(screen.getByText(/Tell me about GenLearn & LangGraph/i)).toBeInTheDocument();
+
     const avatars = screen.getAllByAltText('Ziyad Fouda');
     expect(avatars.length).toBeGreaterThanOrEqual(2);
     expect(avatars[0]).toHaveAttribute('src', '/images/ziyad.webp');
