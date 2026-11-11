@@ -15,7 +15,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Ziyad Fouda — Interactive AI Engineer Portfolio',
+  title: 'Ziyad Fouda - Interactive AI Engineer Portfolio',
   description:
     'Interactive AI Engineer Portfolio of Ziyad Fouda. Explore projects in LangChain, LangGraph, Azure AI Foundry, RAG, and Machine Learning.',
 };

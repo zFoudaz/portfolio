@@ -308,10 +308,11 @@ export const PORTFOLIO_DATA = {
       title: 'Competitive Gaming (Valorant)',
       description:
         'When I step away from training models and building AI agents, you will usually find me queuing up in Valorant. Tactical team play, quick decision-making, and clutching rounds are my favorite way to unwind.',
+      images: [{ src: '/images/fun/valorant.webp', caption: 'Valorant' }],
     },
     {
       emoji: '🐱',
-      title: 'Cat Person — Mshmsh & Bessela',
+      title: 'Cat Person - Mshmsh & Bessela',
       description:
         'Proud cat parent to Mshmsh and Bessela! They are my unofficial pair-programming supervisors, keyboard walkers, and the real bosses of the house.',
       images: [
@@ -329,7 +330,7 @@ export const PORTFOLIO_DATA = {
       emoji: '🧪',
       title: 'Breaking Bad Enthusiast',
       description:
-        'Huge fan of the Breaking Bad universe—peak storytelling, character development, and cinematography that never gets old no matter how many times I rewatch it.',
+        'Huge fan of the Breaking Bad universe - peak storytelling, character development, and cinematography that never gets old no matter how many times I rewatch it.',
     },
   ] satisfies FunFactItem[],
   contact: [

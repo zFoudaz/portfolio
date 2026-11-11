@@ -34,9 +34,10 @@ describe('TopicCardRenderer', () => {
     expect(screen.getByText('AI Engineering Specialization')).toBeInTheDocument();
   });
 
-  it('renders FunCard with Valorant, Mshmsh & Bessela cats, Family, and Breaking Bad, and ContactCard accurately', () => {
+  it('renders FunCard with Valorant image, Mshmsh & Bessela cats, Family, and Breaking Bad without em-dashes, and ContactCard accurately', () => {
     const { rerender } = render(<TopicCardRenderer topicId="fun" />);
     expect(screen.getByText('Fun Facts & Musings')).toBeInTheDocument();
+    expect(screen.getByText('Cat Person - Mshmsh & Bessela')).toBeInTheDocument();
     expect(screen.getAllByText(/Valorant/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Mshmsh/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Bessela/i).length).toBeGreaterThan(0);
