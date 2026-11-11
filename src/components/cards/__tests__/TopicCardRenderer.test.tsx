@@ -65,6 +65,7 @@ describe('TopicCardRenderer', () => {
 
     const modal = screen.getByTestId('image-lightbox-modal');
     expect(modal).toBeInTheDocument();
+    expect(modal.parentElement).toBe(document.body);
 
     const closeBtn = screen.getByRole('button', { name: /Close lightbox/i });
     fireEvent.click(closeBtn);

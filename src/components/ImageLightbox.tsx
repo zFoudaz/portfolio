@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
 
 export interface LightboxImage {
@@ -25,13 +26,13 @@ export function ImageLightbox({
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [image, onClose]);
 
-  if (!image) return null;
+  if (!image || typeof document === 'undefined') return null;
 
-  return (
+  return createPortal(
     <div
       data-testid="image-lightbox-modal"
       onClick={onClose}
-      className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
+      className="fixed inset-0 z-[100] m-0 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6"
     >
       <div
         onClick={(e) => e.stopPropagation()}
@@ -64,6 +65,7 @@ export function ImageLightbox({
           />
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
