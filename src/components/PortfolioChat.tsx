@@ -61,6 +61,7 @@ export function PortfolioChat(): React.JSX.Element {
       };
       setMessages((prev) => [...prev, botMsg]);
       setPendingCount((c) => Math.max(0, c - 1));
+      timersRef.current = timersRef.current.filter((t) => t !== timer);
     }, 320);
 
     timersRef.current.push(timer);
@@ -96,6 +97,7 @@ export function PortfolioChat(): React.JSX.Element {
         };
         setMessages((prev) => [...prev, fallbackMsg]);
         setPendingCount((c) => Math.max(0, c - 1));
+        timersRef.current = timersRef.current.filter((t) => t !== timer);
       }, 320);
 
       timersRef.current.push(timer);
@@ -153,7 +155,7 @@ export function PortfolioChat(): React.JSX.Element {
           {/* Dynamic Conversation History */}
           <AnimatePresence initial={false}>
             {messages.map((msg, index) => {
-              const isLatest = index === messages.length - 1;
+              const isLatest = index === messages.length - 1 && pendingCount === 0;
               const topicMeta = msg.topicId
                 ? TOPIC_OPTIONS.find((t) => t.id === msg.topicId)
                 : undefined;
@@ -211,31 +213,30 @@ export function PortfolioChat(): React.JSX.Element {
                 </motion.div>
               );
             })}
-
-            {/* Typing Indicator */}
-            {pendingCount > 0 && (
-              <motion.div
-                key="typing-indicator"
-                ref={latestMessageRef}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -4 }}
-                transition={{ duration: 0.18 }}
-                className="flex items-center gap-3 scroll-mt-24"
-                data-testid="typing-indicator"
-              >
-                <div className="w-9 h-9 rounded-full bg-black text-white flex-shrink-0 flex items-center justify-center font-bold text-xs border border-black">
-                  ZF
-                </div>
-                <div className="bg-white px-4 py-3 rounded-2xl rounded-tl-sm border-2 border-black shadow-sm flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-[#ED1C24] animate-bounce [animation-delay:-0.3s]" />
-                  <span className="w-2 h-2 rounded-full bg-black animate-bounce [animation-delay:-0.15s]" />
-                  <span className="w-2 h-2 rounded-full bg-black animate-bounce" />
-                  <span className="text-xs font-mono text-[#555555] ml-1">rendering_card...</span>
-                </div>
-              </motion.div>
-            )}
           </AnimatePresence>
+
+          {/* Typing Indicator */}
+          {pendingCount > 0 && (
+            <motion.div
+              key="typing-indicator"
+              ref={latestMessageRef}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.18 }}
+              className="flex items-center gap-3 scroll-mt-24"
+              data-testid="typing-indicator"
+            >
+              <div className="w-9 h-9 rounded-full bg-black text-white flex-shrink-0 flex items-center justify-center font-bold text-xs border border-black">
+                ZF
+              </div>
+              <div className="bg-white px-4 py-3 rounded-2xl rounded-tl-sm border-2 border-black shadow-sm flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#ED1C24] animate-bounce [animation-delay:-0.3s]" />
+                <span className="w-2 h-2 rounded-full bg-black animate-bounce [animation-delay:-0.15s]" />
+                <span className="w-2 h-2 rounded-full bg-black animate-bounce" />
+                <span className="text-xs font-mono text-[#555555] ml-1">rendering_card...</span>
+              </div>
+            </motion.div>
+          )}
         </div>
       </main>
 

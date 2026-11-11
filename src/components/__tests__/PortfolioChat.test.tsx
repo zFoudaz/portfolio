@@ -70,4 +70,23 @@ describe('PortfolioChat interactive flow', () => {
     expect(screen.getByText('What is the weather?')).toBeInTheDocument();
     expect(screen.getByText(/AI chatbot assistant is being connected/i)).toBeInTheDocument();
   });
+
+  it('handles rapid duplicate topic clicks while typing indicator is active without stuck indicators', () => {
+    render(<PortfolioChat />);
+    const funBtn = screen.getByRole('button', { name: /Fun/i });
+
+    // Click twice rapidly before timer resolves
+    fireEvent.click(funBtn);
+    fireEvent.click(funBtn);
+
+    expect(screen.getByTestId('typing-indicator')).toBeInTheDocument();
+    expect(screen.getAllByTestId('user-query-bubble')).toHaveLength(2);
+
+    act(() => {
+      vi.advanceTimersByTime(400);
+    });
+
+    expect(screen.queryByTestId('typing-indicator')).not.toBeInTheDocument();
+    expect(screen.getAllByText('Fun Facts & Musings')).toHaveLength(2);
+  });
 });

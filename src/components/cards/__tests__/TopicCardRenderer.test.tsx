@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { describe, it, expect } from 'vitest';
 import { TopicCardRenderer } from '../TopicCardRenderer';
 
@@ -30,5 +30,13 @@ describe('TopicCardRenderer', () => {
     expect(screen.getByText('Fun Facts & Musings')).toBeInTheDocument();
     rerender(<TopicCardRenderer topicId="contact" />);
     expect(screen.getByText('ziyad.fouda7@gmail.com')).toBeInTheDocument();
+  });
+
+  it('renders styled fallback header when external project or certificate image fails to load', () => {
+    render(<TopicCardRenderer topicId="projects" />);
+    const genlearnImg = screen.getByAltText('GenLearn Project Architecture');
+    fireEvent.error(genlearnImg);
+    expect(screen.queryByAltText('GenLearn Project Architecture')).not.toBeInTheDocument();
+    expect(screen.getByTestId('project-fallback-genlearn')).toBeInTheDocument();
   });
 });

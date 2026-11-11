@@ -9,7 +9,10 @@ function ProjectVisualHeader({ project }: { project: ProjectItem }) {
 
   if (imgFailed) {
     return (
-      <div className="w-full h-44 bg-gradient-to-br from-black via-[#1f1f1f] to-[#333333] border-b-2 border-black flex flex-col items-center justify-center p-4 text-center">
+      <div
+        data-testid={`project-fallback-${project.id}`}
+        className="w-full h-44 bg-gradient-to-br from-black via-[#1f1f1f] to-[#333333] border-b-2 border-black flex flex-col items-center justify-center p-4 text-center"
+      >
         <span className="px-2.5 py-0.5 rounded bg-[#ED1C24] text-white font-mono text-[10px] font-bold uppercase tracking-wider mb-2">
           {project.techFocus}
         </span>
