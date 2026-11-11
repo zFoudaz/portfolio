@@ -98,4 +98,16 @@ describe('PortfolioChat interactive flow', () => {
     expect(screen.queryByTestId('typing-indicator')).not.toBeInTheDocument();
     expect(screen.getAllByText('Fun Facts & Musings')).toHaveLength(2);
   });
+
+  it('toggles dark mode class on documentElement when the header theme button is clicked', () => {
+    document.documentElement.classList.remove('dark');
+    render(<PortfolioChat />);
+
+    const themeBtn = screen.getByRole('button', { name: /Toggle dark mode/i });
+    fireEvent.click(themeBtn);
+    expect(document.documentElement.classList.contains('dark')).toBe(true);
+
+    fireEvent.click(themeBtn);
+    expect(document.documentElement.classList.contains('dark')).toBe(false);
+  });
 });

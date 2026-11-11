@@ -6,10 +6,71 @@ body {
   font-family: var(--font-inter), 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: #FAFAFA;
   color: #000000;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .font-mono {
   font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+}
+
+/* Neo-Brutalist Dark Mode Theme Overrides */
+html.dark body,
+html.dark .bg-\[\#FAFAFA\] {
+  background-color: #0D0D0D !important;
+  color: #F5F5F5;
+}
+
+html.dark .bg-white {
+  background-color: #161616 !important;
+}
+
+html.dark .bg-white\/95 {
+  background-color: rgba(20, 20, 20, 0.95) !important;
+}
+
+html.dark .bg-\[\#DCDCDC\] {
+  background-color: #202020 !important;
+}
+
+html.dark .bg-\[\#F5F5F5\] {
+  background-color: #262626 !important;
+}
+
+html.dark .text-black {
+  color: #F5F5F5 !important;
+}
+
+html.dark .text-\[\#333333\] {
+  color: #CCCCCC !important;
+}
+
+html.dark .text-\[\#555555\],
+html.dark .text-\[\#666666\] {
+  color: #A0A0A0 !important;
+}
+
+html.dark .border-black {
+  border-color: #383838 !important;
+}
+
+html.dark .border-\[\#DCDCDC\] {
+  border-color: #2E2E2E !important;
+}
+
+html.dark .topic-btn.bg-black {
+  background-color: #ED1C24 !important;
+  color: #FFFFFF !important;
+  border-color: #ED1C24 !important;
+}
+
+html.dark [data-testid="user-query-bubble"] > div {
+  background-color: #242424 !important;
+  border-color: #444444 !important;
+  color: #FFFFFF !important;
+}
+
+html.dark [data-testid="floating-chatbar"] {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6) !important;
 }
 
 /* Custom Scrollbar */
@@ -22,9 +83,17 @@ body {
   background: #F0F0F0;
 }
 
+html.dark ::-webkit-scrollbar-track {
+  background: #141414;
+}
+
 ::-webkit-scrollbar-thumb {
   background: #CCCCCC;
   border-radius: 9999px;
+}
+
+html.dark ::-webkit-scrollbar-thumb {
+  background: #383838;
 }
 
 ::-webkit-scrollbar-thumb:hover {
