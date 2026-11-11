@@ -10,6 +10,7 @@ describe('portfolioData & keyword routing', () => {
     expect(matchTopicFromInput('Tell me about your projects and GenLearn')).toBe('projects');
     expect(matchTopicFromInput('What python and pytorch skills do you have?')).toBe('skills');
     expect(matchTopicFromInput('How can I contact or email you?')).toBe('contact');
+    expect(matchTopicFromInput('How can we connect?')).toBe('contact');
     expect(matchTopicFromInput('Tell me something fun')).toBe('fun');
     expect(matchTopicFromInput('Who is Ziyad? education and experience')).toBe('me');
   });

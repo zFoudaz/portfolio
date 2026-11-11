@@ -429,6 +429,8 @@ export function matchTopicFromInput(input: string): TopicId | null {
   if (
     val === 'contact' ||
     val.includes('contact') ||
+    val.includes('connect') ||
+    val.includes('touch') ||
     val.includes('email') ||
     val.includes('phone') ||
     val.includes('reach') ||
