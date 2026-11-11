@@ -10,11 +10,16 @@ export function Header({ onContactClick }: { onContactClick: () => void }): Reac
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    const saved = typeof window !== 'undefined' ? localStorage.getItem('theme') : null;
-    if (saved === 'dark') {
-      document.documentElement.classList.add('dark');
-      setIsDark(true);
-    }
+    try {
+      const saved =
+        typeof window !== 'undefined' && window.localStorage
+          ? window.localStorage.getItem('theme')
+          : null;
+      if (saved === 'dark') {
+        document.documentElement.classList.add('dark');
+        setIsDark(true);
+      }
+    } catch {}
   }, []);
 
   const toggleDarkMode = () => {
