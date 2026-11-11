@@ -46,19 +46,19 @@ export function ProjectsCard() {
   const { projects } = PORTFOLIO_DATA;
 
   return (
-    <div className="w-full bg-white p-6 sm:p-8 rounded-2xl rounded-tl-sm border-2 border-black space-y-6 shadow-sm">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-black pb-4">
+    <div className="w-full bg-white p-4 sm:p-8 rounded-2xl sm:rounded-tl-sm border-2 border-black space-y-5 sm:space-y-6 shadow-sm">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-black pb-3 sm:pb-4">
         <div>
           <span className="px-3 py-1 rounded-full bg-[#ED1C24] text-white text-xs font-bold uppercase tracking-wider">
             Production AI Systems
           </span>
-          <h3 className="text-3xl font-black text-black mt-2">Engineering Projects</h3>
+          <h3 className="text-2xl sm:text-3xl font-black text-black mt-2">Engineering Projects</h3>
         </div>
         <span className="text-xs font-mono font-bold text-[#555555]">4 Featured Systems</span>
       </div>
 
       {/* Projects 2x2 Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         {projects.map((project) => (
           <div
             key={project.id}
@@ -66,8 +66,8 @@ export function ProjectsCard() {
           >
             <div>
               <ProjectVisualHeader project={project} />
-              <div className="p-5 space-y-3">
-                <div className="flex items-center justify-between">
+              <div className="p-4 sm:p-5 space-y-3">
+                <div className="flex flex-wrap items-center justify-between gap-1.5">
                   <span
                     className={`px-2.5 py-0.5 rounded-full ${
                       project.isAccentBadge ? 'bg-[#ED1C24]' : 'bg-black'
@@ -79,8 +79,8 @@ export function ProjectsCard() {
                     {project.techFocus}
                   </span>
                 </div>
-                <div className="flex items-center justify-between gap-2">
-                  <h4 className="text-xl font-black text-black">{project.title}</h4>
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <h4 className="text-lg sm:text-xl font-black text-black">{project.title}</h4>
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
@@ -103,7 +103,7 @@ export function ProjectsCard() {
                 </ul>
               </div>
             </div>
-            <div className="p-5 pt-0">
+            <div className="p-4 sm:p-5 pt-0">
               <div className="flex flex-wrap gap-1.5 pt-3 border-t border-black text-[11px] font-bold">
                 {project.tags.map((tag) => (
                   <span

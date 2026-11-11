@@ -30,13 +30,13 @@ export function BottomDock({
   };
 
   return (
-    <footer className="fixed bottom-5 left-0 right-0 z-50 flex justify-center px-4 pointer-events-none">
+    <footer className="fixed bottom-3 sm:bottom-5 left-0 right-0 z-50 flex justify-center px-2.5 sm:px-4 pointer-events-none">
       <div
         data-testid="floating-chatbar"
-        className="pointer-events-auto w-full max-w-[540px] bg-white rounded-[22px] border-[1.5px] border-black p-3 shadow-[0_8px_30px_rgb(0,0,0,0.08)] space-y-2.5"
+        className="pointer-events-auto w-full max-w-[540px] bg-white rounded-[20px] sm:rounded-[22px] border-[1.5px] border-black p-2.5 sm:p-3 shadow-[0_8px_30px_rgb(0,0,0,0.08)] space-y-2 sm:space-y-2.5"
       >
         {/* Top Row: Pill Buttons (Me, Projects, Skills, Fun, Contact) */}
-        <div className="flex items-center justify-between gap-2 overflow-x-auto no-scrollbar">
+        <div className="flex flex-wrap sm:flex-nowrap items-center justify-center sm:justify-between gap-1.5 sm:gap-2">
           {TOPIC_OPTIONS.map((topic) => {
             const isActive = activeTopic === topic.id;
             return (
@@ -44,14 +44,14 @@ export function BottomDock({
                 key={topic.id}
                 type="button"
                 onClick={() => onSelectTopic(topic.id)}
-                className={`topic-btn flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-full font-bold text-xs border-[1.5px] border-black transition-all active:scale-95 whitespace-nowrap cursor-pointer ${
+                className={`topic-btn flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full font-bold text-[11px] sm:text-xs border-[1.5px] border-black transition-all active:scale-95 whitespace-nowrap cursor-pointer ${
                   isActive
                     ? 'bg-black text-white'
                     : 'bg-white hover:bg-[#F5F5F5] text-black'
                 }`}
               >
                 <span
-                  className={`w-4 h-4 rounded-full ${topic.badgeClass} flex items-center justify-center text-[10px] font-bold flex-shrink-0`}
+                  className={`w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full ${topic.badgeClass} flex items-center justify-center text-[9px] sm:text-[10px] font-bold flex-shrink-0`}
                 >
                   {topic.icon}
                 </span>
@@ -69,7 +69,7 @@ export function BottomDock({
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value)}
             placeholder="Ask Ziyad anything..."
-            className="w-full pl-4 pr-11 py-2.5 rounded-full bg-[#F5F5F5] border-[1.5px] border-black text-xs sm:text-sm font-medium text-black placeholder-[#888888] focus:outline-none focus:bg-white transition-all"
+            className="w-full pl-3.5 sm:pl-4 pr-10 sm:pr-11 py-2 sm:py-2.5 rounded-full bg-[#F5F5F5] border-[1.5px] border-black text-xs sm:text-sm font-medium text-black placeholder-[#888888] focus:outline-none focus:bg-white transition-all"
           />
           <button
             type="submit"

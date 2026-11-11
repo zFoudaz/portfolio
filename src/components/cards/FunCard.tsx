@@ -66,13 +66,13 @@ export function FunCard() {
   const [selectedImage, setSelectedImage] = useState<LightboxImage | null>(null);
 
   return (
-    <div className="w-full bg-white p-6 sm:p-8 rounded-2xl rounded-tl-sm border-2 border-black space-y-6 shadow-sm">
-      <div className="flex items-center justify-between border-b-2 border-black pb-4">
+    <div className="w-full bg-white p-4 sm:p-8 rounded-2xl sm:rounded-tl-sm border-2 border-black space-y-5 sm:space-y-6 shadow-sm">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-black pb-3 sm:pb-4">
         <div>
           <span className="px-3 py-1 rounded-full bg-pink-100 text-pink-900 border border-pink-300 text-xs font-bold uppercase tracking-wider">
             Behind the Code
           </span>
-          <h3 className="text-3xl font-black text-black mt-2">Fun Facts &amp; Musings</h3>
+          <h3 className="text-2xl sm:text-3xl font-black text-black mt-2">Fun Facts &amp; Musings</h3>
         </div>
         <span className="text-xs font-mono font-bold text-[#555555]">Click photos to zoom</span>
       </div>

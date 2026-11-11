@@ -122,11 +122,11 @@ export function PortfolioChat(): React.JSX.Element {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA] flex flex-col antialiased selection:bg-[#ED1C24] selection:text-white pb-44">
+    <div className="min-h-screen bg-[#FAFAFA] flex flex-col antialiased selection:bg-[#ED1C24] selection:text-white pb-48 sm:pb-44">
       <Header onContactClick={() => handleSelectTopic('contact')} />
 
-      <main id="chat-container" className="w-full px-4 py-8 flex-1">
-        <div id="messages-list" className="max-w-4xl mx-auto space-y-8">
+      <main id="chat-container" className="w-full px-3 sm:px-4 py-5 sm:py-8 flex-1">
+        <div id="messages-list" className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
           {/* Intro Welcome Message */}
           <motion.div
             initial={{ opacity: 0, y: 12, scale: 0.98 }}
@@ -134,9 +134,11 @@ export function PortfolioChat(): React.JSX.Element {
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="flex items-start gap-3"
           >
-            <Avatar size="sm" />
-            <div className="space-y-4 max-w-3xl w-full">
-              <div className="bg-white p-6 sm:p-7 rounded-2xl rounded-tl-sm border-2 border-black shadow-sm space-y-4">
+            <div className="hidden sm:block flex-shrink-0">
+              <Avatar size="sm" />
+            </div>
+            <div className="space-y-4 max-w-3xl w-full min-w-0">
+              <div className="bg-white p-4 sm:p-7 rounded-2xl sm:rounded-tl-sm border-2 border-black shadow-sm space-y-4">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
                     <span className="px-2 py-0.5 rounded bg-black text-white text-[10px] font-mono font-bold">
@@ -147,7 +149,7 @@ export function PortfolioChat(): React.JSX.Element {
                     </span>
                   </div>
                   <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#00AA44]/15 text-[#008833] text-[11px] font-bold border border-[#00AA44]/40">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#00AA44]" />
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#00AA44] flex-shrink-0" />
                     <span>Available for AI Engineering Roles</span>
                   </div>
                 </div>
@@ -161,20 +163,20 @@ export function PortfolioChat(): React.JSX.Element {
                   </p>
                 </div>
 
-                <p className="text-sm text-[#333333] leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#333333] leading-relaxed">
                   I build production LLM applications, multi-agent <strong>LangGraph</strong>{' '}
                   workflows, and grounded <strong>RAG</strong> pipelines. Explore my work using the
                   topic buttons in the dock below, or ask a question directly in the chat!
                 </p>
 
                 {/* Quick Action Links */}
-                <div className="flex flex-wrap items-center gap-2.5 pt-1">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 pt-1">
                   <a
                     href={PORTFOLIO_DATA.profile.resumeUrl}
                     target="_blank"
                     rel="noreferrer"
                     download
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-black hover:bg-[#ED1C24] text-white text-xs font-bold border-[1.5px] border-black transition-colors shadow-sm"
+                    className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-full bg-black hover:bg-[#ED1C24] text-white text-xs font-bold border-[1.5px] border-black transition-colors shadow-sm"
                   >
                     <span>📄</span>
                     <span>Download CV (PDF)</span>
@@ -183,7 +185,7 @@ export function PortfolioChat(): React.JSX.Element {
                     href={PORTFOLIO_DATA.profile.githubUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#F5F5F5] hover:bg-[#DCDCDC] text-black text-xs font-bold border-[1.5px] border-black transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-full bg-[#F5F5F5] hover:bg-[#DCDCDC] text-black text-xs font-bold border-[1.5px] border-black transition-colors"
                   >
                     <span>GitHub</span>
                   </a>
@@ -191,7 +193,7 @@ export function PortfolioChat(): React.JSX.Element {
                     href={PORTFOLIO_DATA.profile.linkedinUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full bg-[#F5F5F5] hover:bg-[#DCDCDC] text-black text-xs font-bold border-[1.5px] border-black transition-colors"
+                    className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-full bg-[#F5F5F5] hover:bg-[#DCDCDC] text-black text-xs font-bold border-[1.5px] border-black transition-colors"
                   >
                     <span>LinkedIn</span>
                   </a>
@@ -202,13 +204,13 @@ export function PortfolioChat(): React.JSX.Element {
                   <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#666666]">
                     Try Asking:
                   </div>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {STARTER_PROMPTS.map((prompt) => (
                       <button
                         key={prompt}
                         type="button"
                         onClick={() => handleCustomSubmit(prompt)}
-                        className="text-left px-3 py-1.5 rounded-full bg-[#F5F5F5] hover:bg-black hover:text-white text-black text-xs font-semibold border border-black transition-all active:scale-95 cursor-pointer"
+                        className="text-left px-3 py-1.5 rounded-xl sm:rounded-full bg-[#F5F5F5] hover:bg-black hover:text-white text-black text-[11px] sm:text-xs font-semibold border border-black transition-all active:scale-95 cursor-pointer"
                       >
                         “{prompt}”
                       </button>
@@ -238,8 +240,8 @@ export function PortfolioChat(): React.JSX.Element {
                     className="flex justify-end scroll-mt-24"
                     data-testid="user-query-bubble"
                   >
-                    <div className="bg-black text-white px-4 py-2 rounded-full font-semibold text-xs sm:text-sm flex items-center gap-2 border border-black shadow-sm max-w-md">
-                      <span>{topicMeta?.userEmoji || '👤'}</span>
+                    <div className="bg-black text-white px-3.5 sm:px-4 py-2 rounded-2xl sm:rounded-full font-semibold text-xs sm:text-sm flex items-center gap-2 border border-black shadow-sm max-w-[90%] sm:max-w-md">
+                      <span className="flex-shrink-0">{topicMeta?.userEmoji || '👤'}</span>
                       <span>{msg.text}</span>
                     </div>
                   </motion.div>
@@ -253,28 +255,32 @@ export function PortfolioChat(): React.JSX.Element {
                   initial={{ opacity: 0, y: 16, scale: 0.98 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                  className="flex items-start gap-3 scroll-mt-24"
+                  className="flex items-start gap-3 scroll-mt-24 min-w-0"
                 >
-                  <Avatar size="sm" />
-                  {msg.topicId ? (
-                    <TopicCardRenderer topicId={msg.topicId} />
-                  ) : (
-                    <div className="bg-white p-5 rounded-2xl rounded-tl-sm border-2 border-black shadow-sm space-y-3 max-w-2xl">
-                      <p className="text-sm text-[#333333] leading-relaxed">{msg.text}</p>
-                      <div className="flex flex-wrap gap-1.5 pt-1">
-                        {TOPIC_OPTIONS.map((t) => (
-                          <button
-                            key={`fallback-${msg.id}-${t.id}`}
-                            type="button"
-                            onClick={() => handleSelectTopic(t.id)}
-                            className="px-3 py-1 rounded-full bg-[#DCDCDC] hover:bg-black hover:text-white text-black text-xs font-bold border border-black transition-colors cursor-pointer"
-                          >
-                            {t.icon} {t.label}
-                          </button>
-                        ))}
+                  <div className="hidden sm:block flex-shrink-0">
+                    <Avatar size="sm" />
+                  </div>
+                  <div className="w-full min-w-0">
+                    {msg.topicId ? (
+                      <TopicCardRenderer topicId={msg.topicId} />
+                    ) : (
+                      <div className="bg-white p-4 sm:p-5 rounded-2xl sm:rounded-tl-sm border-2 border-black shadow-sm space-y-3 max-w-2xl">
+                        <p className="text-xs sm:text-sm text-[#333333] leading-relaxed">{msg.text}</p>
+                        <div className="flex flex-wrap gap-1.5 pt-1">
+                          {TOPIC_OPTIONS.map((t) => (
+                            <button
+                              key={`fallback-${msg.id}-${t.id}`}
+                              type="button"
+                              onClick={() => handleSelectTopic(t.id)}
+                              className="px-3 py-1 rounded-full bg-[#DCDCDC] hover:bg-black hover:text-white text-black text-xs font-bold border border-black transition-colors cursor-pointer"
+                            >
+                              {t.icon} {t.label}
+                            </button>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                  )}
+                    )}
+                  </div>
                 </motion.div>
               );
             })}
@@ -291,8 +297,10 @@ export function PortfolioChat(): React.JSX.Element {
               className="flex items-center gap-3 scroll-mt-24"
               data-testid="typing-indicator"
             >
-              <Avatar size="sm" />
-              <div className="bg-white px-4 py-3 rounded-2xl rounded-tl-sm border-2 border-black shadow-sm flex items-center gap-2">
+              <div className="hidden sm:block flex-shrink-0">
+                <Avatar size="sm" />
+              </div>
+              <div className="bg-white px-4 py-3 rounded-2xl sm:rounded-tl-sm border-2 border-black shadow-sm flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#ED1C24] animate-bounce [animation-delay:-0.3s]" />
                 <span className="w-2 h-2 rounded-full bg-black animate-bounce [animation-delay:-0.15s]" />
                 <span className="w-2 h-2 rounded-full bg-black animate-bounce" />

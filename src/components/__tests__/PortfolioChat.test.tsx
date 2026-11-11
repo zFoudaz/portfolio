@@ -110,4 +110,16 @@ describe('PortfolioChat interactive flow', () => {
     fireEvent.click(themeBtn);
     expect(document.documentElement.classList.contains('dark')).toBe(false);
   });
+
+  it('uses mobile-responsive classes on Header, BottomDock pills, and chat avatars so elements do not overflow on 360px screens', () => {
+    render(<PortfolioChat />);
+
+    // BottomDock topic pills container should wrap on mobile so all 5 pills are visible
+    const meBtn = screen.getByRole('button', { name: /Me/i });
+    expect(meBtn.parentElement?.className).toContain('flex-wrap');
+
+    // Header name should not break onto multiple lines
+    const headerName = screen.getAllByText('Ziyad Fouda')[0];
+    expect(headerName.className).toContain('whitespace-nowrap');
+  });
 });

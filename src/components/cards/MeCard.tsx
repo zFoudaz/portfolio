@@ -7,13 +7,13 @@ export function MeCard() {
   const { profile, experiences } = PORTFOLIO_DATA;
 
   return (
-    <div className="w-full bg-white p-6 sm:p-8 rounded-2xl rounded-tl-sm border-2 border-black space-y-6 shadow-sm">
-      <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-black pb-4">
+    <div className="w-full bg-white p-4 sm:p-8 rounded-2xl sm:rounded-tl-sm border-2 border-black space-y-5 sm:space-y-6 shadow-sm">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-black pb-3 sm:pb-4">
         <div>
           <span className="px-3 py-1 rounded-full bg-black text-white text-xs font-bold uppercase tracking-wider">
             Summary &amp; Education
           </span>
-          <h3 className="text-3xl font-black text-black mt-2">{profile.name}</h3>
+          <h3 className="text-2xl sm:text-3xl font-black text-black mt-2">{profile.name}</h3>
           <div className="text-sm font-semibold text-[#333333]">{profile.role}</div>
         </div>
         <div className="flex flex-col sm:items-end gap-2">

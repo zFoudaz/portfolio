@@ -20,13 +20,13 @@ export function ContactCard() {
   };
 
   return (
-    <div className="w-full bg-white p-6 sm:p-8 rounded-2xl rounded-tl-sm border-2 border-black space-y-6 shadow-sm">
-      <div className="flex items-center justify-between border-b-2 border-black pb-4">
+    <div className="w-full bg-white p-4 sm:p-8 rounded-2xl sm:rounded-tl-sm border-2 border-black space-y-5 sm:space-y-6 shadow-sm">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-black pb-3 sm:pb-4">
         <div>
           <span className="px-3 py-1 rounded-full bg-[#ED1C24] text-white text-xs font-bold uppercase tracking-wider">
             Direct Communication
           </span>
-          <h3 className="text-3xl font-black text-black mt-2">Get in Touch with Ziyad</h3>
+          <h3 className="text-2xl sm:text-3xl font-black text-black mt-2">Get in Touch with Ziyad</h3>
         </div>
         <span className="text-xs font-mono font-bold text-[#00AA44]">● Ready to Connect</span>
       </div>
