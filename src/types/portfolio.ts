@@ -57,6 +57,7 @@ export interface FunFactItem {
   emoji: string;
   title: string;
   description: string;
+  images?: { src: string; caption: string }[];
 }
 
 export interface ContactChannel {

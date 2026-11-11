@@ -304,28 +304,32 @@ export const PORTFOLIO_DATA = {
   ] satisfies CertificateItem[],
   funFacts: [
     {
-      emoji: '🤖',
-      title: 'Control Systems Meets LangGraph',
+      emoji: '🎮',
+      title: 'Competitive Gaming (Valorant)',
       description:
-        'Studying control systems engineering gave me a natural intuition for designing cyclic feedback loops in LangGraph: PID controllers and multi-agent critique routers share the exact same feedback error-correction philosophy!',
+        'When I step away from training models and building AI agents, you will usually find me queuing up in Valorant. Tactical team play, quick decision-making, and clutching rounds are my favorite way to unwind.',
     },
     {
-      emoji: '🍿',
-      title: 'PopChoice Movie Night Dilemma',
+      emoji: '🐱',
+      title: 'Cat Person — Mshmsh & Bessela',
       description:
-        'PopChoice was born because I spent more time browsing Netflix menus than actually watching movies. Building a vector embedding recommender was my engineering excuse to solve movie paralysis.',
+        'Proud cat parent to Mshmsh and Bessela! They are my unofficial pair-programming supervisors, keyboard walkers, and the real bosses of the house.',
+      images: [
+        { src: '/images/fun/mshmsh.webp', caption: 'Mshmsh' },
+        { src: '/images/fun/bessela.webp', caption: 'Bessela' },
+      ],
     },
     {
-      emoji: '☕',
-      title: 'Prompt Precision & Coffee',
+      emoji: '❤️',
+      title: 'My Family Is Everything',
       description:
-        'Refining deterministic system prompts and evaluating edge cases runs best with strong Egyptian and Turkish coffee.',
+        'Above every project, milestone, or career goal, my family comes first. Their constant support and encouragement are the foundation behind everything I build.',
     },
     {
-      emoji: '⚙️',
-      title: 'From Mansoura to Global AI',
+      emoji: '🧪',
+      title: 'Breaking Bad Enthusiast',
       description:
-        'Based in Mansoura, Egypt, but building for distributed systems and global teams with asynchronous communication and containerized Docker environments.',
+        'Huge fan of the Breaking Bad universe—peak storytelling, character development, and cinematography that never gets old no matter how many times I rewatch it.',
     },
   ] satisfies FunFactItem[],
   contact: [
@@ -401,7 +405,14 @@ export function matchTopicFromInput(input: string): TopicId | null {
     val.includes('fun') ||
     val.includes('hobby') ||
     val.includes('hobbies') ||
-    val.includes('coffee') ||
+    val.includes('game') ||
+    val.includes('gaming') ||
+    val.includes('valorant') ||
+    /\bcats?\b/.test(val) ||
+    val.includes('mshmsh') ||
+    val.includes('bessela') ||
+    val.includes('family') ||
+    val.includes('breaking bad') ||
     val.includes('fact') ||
     val.includes('movie')
   ) {
