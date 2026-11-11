@@ -316,8 +316,8 @@ export const PORTFOLIO_DATA = {
       description:
         'Proud cat parent to Mshmsh and Bessela! They are my unofficial pair-programming supervisors, keyboard walkers, and the real bosses of the house.',
       images: [
-        { src: '/images/fun/mshmsh.webp', caption: 'Mshmsh' },
-        { src: '/images/fun/bessela.webp', caption: 'Bessela' },
+        { src: '/images/fun/Mshmsh.webp', caption: 'Mshmsh' },
+        { src: '/images/fun/Bessela.webp', caption: 'Bessela' },
       ],
     },
     {
