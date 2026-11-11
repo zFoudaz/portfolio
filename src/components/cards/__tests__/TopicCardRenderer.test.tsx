@@ -57,4 +57,22 @@ describe('TopicCardRenderer', () => {
     expect(screen.queryByAltText('GenLearn Project Architecture')).not.toBeInTheDocument();
     expect(screen.getByTestId('project-fallback-genlearn')).toBeInTheDocument();
   });
+
+  it('opens and closes the image lightbox modal when clicking a certificate in SkillsCard or a photo in FunCard', () => {
+    const { rerender } = render(<TopicCardRenderer topicId="skills" />);
+    const certImg = screen.getByAltText('AI Engineering Specialization');
+    fireEvent.click(certImg);
+
+    const modal = screen.getByTestId('image-lightbox-modal');
+    expect(modal).toBeInTheDocument();
+
+    const closeBtn = screen.getByRole('button', { name: /Close lightbox/i });
+    fireEvent.click(closeBtn);
+    expect(screen.queryByTestId('image-lightbox-modal')).not.toBeInTheDocument();
+
+    rerender(<TopicCardRenderer topicId="fun" />);
+    const catImg = screen.getByAltText('Mshmsh');
+    fireEvent.click(catImg);
+    expect(screen.getByTestId('image-lightbox-modal')).toBeInTheDocument();
+  });
 });

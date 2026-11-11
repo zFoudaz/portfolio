@@ -1,10 +1,18 @@
 'use client';
 
 import React, { useState } from 'react';
+import { Maximize2 } from 'lucide-react';
 import { PORTFOLIO_DATA } from '@/data/portfolioData';
 import { CertificateItem } from '@/types/portfolio';
+import { ImageLightbox, LightboxImage } from '@/components/ImageLightbox';
 
-function CertificateVisualHeader({ cert }: { cert: CertificateItem }) {
+function CertificateVisualHeader({
+  cert,
+  onZoom,
+}: {
+  cert: CertificateItem;
+  onZoom: (img: LightboxImage) => void;
+}) {
   const [imgFailed, setImgFailed] = useState(false);
 
   if (imgFailed) {
@@ -19,17 +27,34 @@ function CertificateVisualHeader({ cert }: { cert: CertificateItem }) {
   }
 
   return (
-    <img
-      src={cert.imageUrl}
-      alt={cert.title}
-      onError={() => setImgFailed(true)}
-      className="w-full h-32 object-cover border-b-2 border-black bg-[#1a1a1a]"
-    />
+    <div
+      onClick={() =>
+        onZoom({
+          src: cert.imageUrl,
+          title: cert.title,
+          subtitle: `${cert.issuer} • ${cert.badge}`,
+        })
+      }
+      className="relative group cursor-zoom-in overflow-hidden border-b-2 border-black bg-[#1a1a1a]"
+      title={`Click to view ${cert.title} full size`}
+    >
+      <img
+        src={cert.imageUrl}
+        alt={cert.title}
+        onError={() => setImgFailed(true)}
+        className="w-full h-32 object-cover transition-transform duration-300 group-hover:scale-105"
+      />
+      <div className="absolute top-2 right-2 px-2 py-1 rounded-full bg-black/85 text-white text-[10px] font-mono font-bold flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity border border-white/20">
+        <Maximize2 className="w-3 h-3" />
+        <span>Zoom</span>
+      </div>
+    </div>
   );
 }
 
 export function SkillsCard() {
   const { skills, certificates } = PORTFOLIO_DATA;
+  const [selectedImage, setSelectedImage] = useState<LightboxImage | null>(null);
 
   return (
     <div className="w-full bg-white p-6 sm:p-8 rounded-2xl rounded-tl-sm border-2 border-black space-y-6 shadow-sm">
@@ -69,8 +94,11 @@ export function SkillsCard() {
 
       {/* Certificates 3-Column Grid */}
       <div className="space-y-4 pt-3">
-        <div className="text-xs font-bold uppercase tracking-wider text-black border-b border-black pb-2">
-          Certified Industry Credentials
+        <div className="flex items-center justify-between border-b border-black pb-2">
+          <div className="text-xs font-bold uppercase tracking-wider text-black">
+            Certified Industry Credentials
+          </div>
+          <span className="text-[11px] font-mono text-[#555555]">Click any certificate to zoom</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
@@ -80,7 +108,7 @@ export function SkillsCard() {
               className="bg-[#F5F5F5] rounded-lg border-2 border-black overflow-hidden flex flex-col justify-between"
             >
               <div>
-                <CertificateVisualHeader cert={cert} />
+                <CertificateVisualHeader cert={cert} onZoom={setSelectedImage} />
                 <div className="p-3.5 space-y-1">
                   <div className="text-xs font-bold text-black">{cert.title}</div>
                   <div className="text-[11px] font-mono text-[#555555]">{cert.issuer}</div>
@@ -95,6 +123,8 @@ export function SkillsCard() {
           ))}
         </div>
       </div>
+
+      <ImageLightbox image={selectedImage} onClose={() => setSelectedImage(null)} />
     </div>
   );
 }
