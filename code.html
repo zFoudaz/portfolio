@@ -1,0 +1,771 @@
+<!DOCTYPE html><html lang="en" class="h-full bg-[#FFFFFF]"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ziyad Fouda — Interactive AI Engineer Portfolio</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        primary: '#ED1C24',
+        'true-black': '#000000',
+        'dark-gray': '#333333',
+        'pure-white': '#FFFFFF',
+        surface: '#DCDCDC',
+        'surface-light': '#F5F5F5',
+        'border-black': '#000000',
+        'border-subtle': '#D0D0D0',
+      },
+      fontFamily: {
+        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'monospace'],
+      },
+      borderRadius: {
+        pill: '9999px',
+        card: '6px',
+      }
+    }
+  }
+};</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #FAFAFA;
+      color: #000000;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F0F0F0;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CCCCCC;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #999999;
+    }
+    .chat-bubble-enter {
+      animation: popIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes popIn {
+      0% { opacity: 0; transform: translateY(12px) scale(0.98); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+  </style>
+</head>
+<body class="min-h-[1024px] bg-[#FAFAFA] flex flex-col antialiased selection:bg-[#ED1C24] selection:text-white pb-32" data-stitch-vh="min-h-[1024px]===min-h-screen">
+
+  <!-- Header -->
+  <header class="flex-none bg-white border-b-2 border-black z-30">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center font-extrabold text-sm border-2 border-black">
+          ZF
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-black text-base tracking-tight text-black">Ziyad Fouda</span>
+            <span class="w-2 h-2 rounded-full bg-[#00AA44]"></span>
+          </div>
+          <div class="text-xs text-[#333333] font-medium">AI Engineer • Mansoura, Egypt</div>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a href="https://github.com/zFoudaz" target="_blank" rel="noreferrer" class="p-2 text-black hover:bg-[#DCDCDC] rounded-full transition-colors" title="GitHub">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path></svg>
+        </a>
+        <a href="https://linkedin.com/in/zfouda" target="_blank" rel="noreferrer" class="p-2 text-black hover:bg-[#DCDCDC] rounded-full transition-colors" title="LinkedIn">
+          <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"></path></svg>
+        </a>
+        <button onclick="scrollToTopic(&#39;contact-card&#39;)" class="px-4 py-1.5 rounded-full bg-[#ED1C24] hover:bg-black text-white text-xs font-bold uppercase tracking-wider transition-colors">
+          Contact
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Chat Stream with Pre-fixed Topic Results -->
+  <main id="chat-container" class="w-full px-4 py-8">
+    <div id="messages-list" class="max-w-4xl mx-auto space-y-8">
+
+      <!-- Intro Message -->
+      <div class="flex items-start gap-3 chat-bubble-enter">
+        <div class="w-9 h-9 rounded-full bg-black text-white flex-shrink-0 flex items-center justify-center font-bold text-xs border border-black">
+          ZF
+        </div>
+        <div class="space-y-4 max-w-2xl">
+          <div class="bg-white p-5 rounded-2xl rounded-tl-sm border-2 border-black shadow-sm space-y-2">
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded bg-black text-white text-[10px] font-mono font-bold">SYSTEM ONLINE</span>
+              <span class="text-xs text-[#666666]">Portfolio Chatbot Assistant</span>
+            </div>
+            <p class="text-sm font-semibold text-black">
+              Welcome to my portfolio! I’m <strong class="text-[#ED1C24]">Ziyad Fouda</strong>, AI Engineer and Computer Engineering graduate.
+            </p>
+            <p class="text-sm text-[#333333] leading-relaxed">
+              All CV topics are pre-rendered below in structured cards. Click any quick choice in the dock to jump directly to it, or ask a question in the prompt bar.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 1. ME TOPIC CARD ================= -->
+      <div id="me-card" class="space-y-3 chat-bubble-enter scroll-mt-24">
+        <!-- User Query Tag -->
+        <div class="flex justify-end">
+          <div class="bg-black text-white px-4 py-1.5 rounded-full font-semibold text-xs flex items-center gap-2 border border-black">
+            <span>👤</span>
+            <span>Who is Ziyad Fouda? (Me)</span>
+          </div>
+        </div>
+
+        <!-- Bot Response -->
+        <div class="flex items-start gap-3">
+          <div class="w-9 h-9 rounded-full bg-black text-white flex-shrink-0 flex items-center justify-center font-bold text-xs border border-black">
+            ZF
+          </div>
+          <div class="w-full bg-white p-6 sm:p-8 rounded-2xl rounded-tl-sm border-2 border-black space-y-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-black pb-4">
+              <div>
+                <span class="px-3 py-1 rounded-full bg-black text-white text-xs font-bold uppercase tracking-wider">
+                  Summary &amp; Education
+                </span>
+                <h3 class="text-3xl font-black text-black mt-2">Ziyad Fouda</h3>
+                <div class="text-sm font-semibold text-[#333333]">AI Engineer | Computer Engineering Graduate</div>
+              </div>
+              <div class="text-right">
+                <div class="text-xs font-mono font-bold text-[#ED1C24]">Mansoura, Egypt</div>
+                <div class="text-xs font-mono text-[#555555]">Graduation: June 2026</div>
+              </div>
+            </div>
+
+            <!-- Summary Statement -->
+            <p class="text-sm sm:text-base text-[#333333] leading-relaxed">
+              AI Engineer and Computer Engineering graduate with hands-on experience in machine learning, deep learning, Generative AI, and LLM application development. Experienced in building AI-powered applications and agentic workflows using <strong>Python, LangChain, LangGraph, Azure OpenAI, and RAG</strong>. Seeking an entry-level AI Engineering opportunity to build and deploy scalable AI solutions for real-world problems.
+            </p>
+
+            <!-- Education & Stats Bento Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="bg-[#DCDCDC] p-5 rounded-lg border-2 border-black space-y-1">
+                <div class="text-xs font-bold uppercase text-[#555555]">University</div>
+                <div class="text-lg font-black text-black">Mansoura University</div>
+                <div class="text-xs text-[#333333]">Computer &amp; Control Systems</div>
+              </div>
+              <div class="bg-[#DCDCDC] p-5 rounded-lg border-2 border-black space-y-1">
+                <div class="text-xs font-bold uppercase text-[#555555]">Academic Standing</div>
+                <div class="text-2xl font-black text-black">GPA: 3.7 / 4.0</div>
+                <div class="text-xs font-bold text-[#00AA44]">High Honors Distinction</div>
+              </div>
+              <div class="bg-[#DCDCDC] p-5 rounded-lg border-2 border-black space-y-1">
+                <div class="text-xs font-bold uppercase text-[#555555]">Track Record</div>
+                <div class="text-lg font-black text-black">4 AI Internships</div>
+                <div class="text-xs text-[#333333]">Production &amp; Research</div>
+              </div>
+            </div>
+
+            <!-- Professional Experience Timeline Grid -->
+            <div class="space-y-4 pt-2">
+              <div class="text-xs font-bold uppercase tracking-wider text-black border-b border-black pb-2">
+                Work Experience Timeline
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Zawolf -->
+                <div class="bg-[#F5F5F5] p-5 rounded-lg border-2 border-black space-y-2">
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="px-2 py-0.5 rounded bg-[#ED1C24] text-white font-bold text-[10px] uppercase">Current</span>
+                    <span class="font-mono font-bold text-black">09/2026 – Present</span>
+                  </div>
+                  <h4 class="text-base font-black text-black">AI Engineer Intern</h4>
+                  <div class="text-xs font-semibold text-[#555555]">Zawolf • Mansoura, Egypt</div>
+                  <ul class="text-xs text-[#333333] space-y-1 pt-1 leading-relaxed">
+                    <li>• Explore AI integration across agriculture, manufacturing, real estate, and e-commerce.</li>
+                    <li>• Contribute to developing AI-powered solutions tailored to industry-specific business needs.</li>
+                  </ul>
+                </div>
+
+                <!-- Tips Hindawi -->
+                <div class="bg-[#F5F5F5] p-5 rounded-lg border-2 border-black space-y-2">
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="px-2 py-0.5 rounded bg-black text-white font-bold text-[10px] uppercase">LLM Systems</span>
+                    <span class="font-mono text-[#555555]">12/2025 – 02/2026</span>
+                  </div>
+                  <h4 class="text-base font-black text-black">AI &amp; Large Language Models Intern</h4>
+                  <div class="text-xs font-semibold text-[#555555]">Tips Hindawi • Remote</div>
+                  <ul class="text-xs text-[#333333] space-y-1 pt-1 leading-relaxed">
+                    <li>• Developed chatbots and intelligent assistants using LLMs and prompt engineering.</li>
+                    <li>• Implemented RAG pipelines using embeddings, LangChain, and vector databases.</li>
+                    <li>• Experimented with Mistral and LLM fine-tuning fundamentals for model optimization.</li>
+                  </ul>
+                </div>
+
+                <!-- DEPI -->
+                <div class="bg-[#F5F5F5] p-5 rounded-lg border-2 border-black space-y-2">
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="px-2 py-0.5 rounded bg-black text-white font-bold text-[10px] uppercase">Microsoft ML</span>
+                    <span class="font-mono text-[#555555]">06/2025 – 12/2025</span>
+                  </div>
+                  <h4 class="text-base font-black text-black">Machine Learning Engineer Intern</h4>
+                  <div class="text-xs font-semibold text-[#555555]">Digital Egypt Pioneers Program • Remote</div>
+                  <ul class="text-xs text-[#333333] space-y-1 pt-1 leading-relaxed">
+                    <li>• Applied regression, classification, clustering, dimensionality reduction, and model evaluation.</li>
+                    <li>• Implemented neural networks, optimization, CNNs, and transfer learning for computer vision.</li>
+                  </ul>
+                </div>
+
+                <!-- NTI -->
+                <div class="bg-[#F5F5F5] p-5 rounded-lg border-2 border-black space-y-2">
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="px-2 py-0.5 rounded bg-black text-white font-bold text-[10px] uppercase">Applied AI</span>
+                    <span class="font-mono text-[#555555]">01/2025 – 02/2025</span>
+                  </div>
+                  <h4 class="text-base font-black text-black">AI Internship Trainee</h4>
+                  <div class="text-xs font-semibold text-[#555555]">National Telecommunication Institute • Mansoura</div>
+                  <ul class="text-xs text-[#333333] space-y-1 pt-1 leading-relaxed">
+                    <li>• Applied 4 core machine learning techniques: Regression, Classification, Clustering, and PCA.</li>
+                    <li>• Prepared structured and image datasets via cleaning, preprocessing, and feature visualization.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 2. PROJECTS TOPIC CARD ================= -->
+      <div id="projects-card" class="space-y-3 chat-bubble-enter scroll-mt-24">
+        <!-- User Query Tag -->
+        <div class="flex justify-end">
+          <div class="bg-black text-white px-4 py-1.5 rounded-full font-semibold text-xs flex items-center gap-2 border border-black">
+            <span>💼</span>
+            <span>What are your top projects? (Projects)</span>
+          </div>
+        </div>
+
+        <!-- Bot Response -->
+        <div class="flex items-start gap-3">
+          <div class="w-9 h-9 rounded-full bg-black text-white flex-shrink-0 flex items-center justify-center font-bold text-xs border border-black">
+            ZF
+          </div>
+          <div class="w-full bg-white p-6 sm:p-8 rounded-2xl rounded-tl-sm border-2 border-black space-y-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-black pb-4">
+              <div>
+                <span class="px-3 py-1 rounded-full bg-[#ED1C24] text-white text-xs font-bold uppercase tracking-wider">
+                  Production AI Systems
+                </span>
+                <h3 class="text-3xl font-black text-black mt-2">Engineering Projects</h3>
+              </div>
+              <span class="text-xs font-mono font-bold text-[#555555]">Using image-0dbefd.png</span>
+            </div>
+
+            <!-- Projects 2x2 Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+              <!-- Project 1: GenLearn -->
+              <div class="bg-[#DCDCDC] rounded-lg border-2 border-black overflow-hidden flex flex-col justify-between">
+                <div>
+                  <img src="https://lh3.googleusercontent.com/aida/ALJJyrDizylsROFfDq2_A0NKlsEcFf8A_jDgzNSBadz908lPK_kCrhwYfKxirpzyu5MObrssvq2XehvnBmI3aft-_wzufm5mZ8qyEwmavOj1poG7zhAWPdRKGm3zkRlXmVJS-XiPZb5u7dYLw95Ye9tdme8_UNt_rwv91dS7Ck9oq4NXGm8DP82DFQqra9Z048SHqVCU67HarMJNrtuoM6e1a8JpNUtiLltIY8emQpPi4XUsNoFBtWmVAZMi76aB" alt="GenLearn Project Architecture" class="w-full h-44 object-cover border-b-2 border-black">
+                  <div class="p-5 space-y-3">
+                    <div class="flex items-center justify-between">
+                      <span class="px-2.5 py-0.5 rounded-full bg-black text-white text-[10px] font-bold uppercase tracking-wider">Flagship Platform</span>
+                      <span class="text-xs font-mono font-bold text-black">Azure AI Foundry</span>
+                    </div>
+                    <h4 class="text-xl font-black text-black">GenLearn</h4>
+                    <p class="text-xs text-[#333333] leading-relaxed">
+                      AI-powered learning platform converting user documents into structured courses, lecture videos, quizzes, and interactive AI assistance.
+                    </p>
+                    <ul class="text-xs text-[#333333] space-y-1.5 pt-1">
+                      <li>• <strong>4-Stage Pipeline:</strong> LangChain and Azure AI Foundry transform documents into course modules and narration scripts.</li>
+                      <li>• <strong>Multi-Format OCR:</strong> Ingestion of PDF, DOCX, PPTX, and images via Azure Content Understanding layout analysis.</li>
+                      <li>• <strong>Video &amp; RAG Q&amp;A:</strong> Integrated Azure Text-to-Speech video rendering and grounded conversational assistance.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="p-5 pt-0">
+                  <div class="flex flex-wrap gap-1.5 pt-3 border-t border-black text-[11px] font-bold">
+                    <span class="px-2.5 py-1 bg-white border border-black rounded-full">LangChain</span>
+                    <span class="px-2.5 py-1 bg-white border border-black rounded-full">Azure AI Foundry</span>
+                    <span class="px-2.5 py-1 bg-white border border-black rounded-full">RAG</span>
+                    <span class="px-2.5 py-1 bg-white border border-black rounded-full">Azure TTS</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project 2: Research Agent with LangGraph -->
+              <div class="bg-[#DCDCDC] rounded-lg border-2 border-black overflow-hidden flex flex-col justify-between">
+                <div>
+                  <img src="https://lh3.googleusercontent.com/aida/ALJJyrDizylsROFfDq2_A0NKlsEcFf8A_jDgzNSBadz908lPK_kCrhwYfKxirpzyu5MObrssvq2XehvnBmI3aft-_wzufm5mZ8qyEwmavOj1poG7zhAWPdRKGm3zkRlXmVJS-XiPZb5u7dYLw95Ye9tdme8_UNt_rwv91dS7Ck9oq4NXGm8DP82DFQqra9Z048SHqVCU67HarMJNrtuoM6e1a8JpNUtiLltIY8emQpPi4XUsNoFBtWmVAZMi76aB" alt="Research Agent Architecture" class="w-full h-44 object-cover border-b-2 border-black">
+                  <div class="p-5 space-y-3">
+                    <div class="flex items-center justify-between">
+                      <span class="px-2.5 py-0.5 rounded-full bg-[#ED1C24] text-white text-[10px] font-bold uppercase tracking-wider">Agentic AI</span>
+                      <span class="text-xs font-mono font-bold text-black">LangGraph</span>
+                    </div>
+                    <h4 class="text-xl font-black text-black">Research Agent with LangGraph</h4>
+                    <p class="text-xs text-[#333333] leading-relaxed">
+                      Agentic research workflow decomposing topics into research plans, generating drafts, and executing multi-stage evaluation.
+                    </p>
+                    <ul class="text-xs text-[#333333] space-y-1.5 pt-1">
+                      <li>• <strong>Planner-Writer-Reviewer:</strong> Conditional routing looping drafts back to the writer for iterative review cycles.</li>
+                      <li>• <strong>Tavily Search:</strong> Integrated live web search tool for the writer node with Azure OpenAI reasoning.</li>
+                      <li>• <strong>Typed Shared State:</strong> Managed research plans, drafts, review rubrics, and retry attempts across graph nodes.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="p-5 pt-0">
+                  <div class="flex flex-wrap gap-1.5 pt-3 border-t border-black text-[11px] font-bold">
+                    <span class="px-2.5 py-1 bg-white border border-black rounded-full">LangGraph</span>
+                    <span class="px-2.5 py-1 bg-white border border-black rounded-full">LangChain</span>
+                    <span class="px-2.5 py-1 bg-white border border-black rounded-full">Tavily Search</span>
+                    <span class="px-2.5 py-1 bg-white border border-black rounded-full">Azure OpenAI</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project 3: PopChoice -->
+              <div class="bg-[#DCDCDC] rounded-lg border-2 border-black overflow-hidden flex flex-col justify-between">
+                <div>
+                  <img src="https://lh3.googleusercontent.com/aida/ALJJyrDizylsROFfDq2_A0NKlsEcFf8A_jDgzNSBadz908lPK_kCrhwYfKxirpzyu5MObrssvq2XehvnBmI3aft-_wzufm5mZ8qyEwmavOj1poG7zhAWPdRKGm3zkRlXmVJS-XiPZb5u7dYLw95Ye9tdme8_UNt_rwv91dS7Ck9oq4NXGm8DP82DFQqra9Z048SHqVCU67HarMJNrtuoM6e1a8JpNUtiLltIY8emQpPi4XUsNoFBtWmVAZMi76aB" alt="PopChoice Movie System" class="w-full h-44 object-cover border-b-2 border-black">
+                  <div class="p-5 space-y-3">
+                    <div class="flex items-center justify-between">
+                      <span class="px-2.5 py-0.5 rounded-full bg-black text-white text-[10px] font-bold uppercase tracking-wider">Semantic RAG</span>
+                      <span class="text-xs font-mono font-bold text-black">Supabase + Workers</span>
+                    </div>
+                    <h4 class="text-xl font-black text-black">PopChoice</h4>
+                    <p class="text-xs text-[#333333] leading-relaxed">
+                      RAG-based movie recommendation application using embeddings and Large Language Models.
+                    </p>
+                    <ul class="text-xs text-[#333333] space-y-1.5 pt-1">
+                      <li>• <strong>Vector Similarity:</strong> Embedded user natural language inputs matched against Supabase pgvector embeddings.</li>
+                      <li>• <strong>Serverless Backend:</strong> Deployed on Cloudflare Workers for sub-second low-latency global delivery.</li>
+                      <li>• <strong>Responsive Frontend:</strong> Hosted and maintained live on GitHub Pages.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="p-5 pt-0">
+                  <div class="flex flex-wrap gap-1.5 pt-3 border-t border-black text-[11px] font-bold">
+                    <span class="px-2.5 py-1 bg-white border border-black rounded-full">Supabase pgvector</span>
+                    <span class="px-2.5 py-1 bg-white border border-black rounded-full">Cloudflare Workers</span>
+                    <span class="px-2.5 py-1 bg-white border border-black rounded-full">Embeddings</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project 4: Study Tracker App -->
+              <div class="bg-[#DCDCDC] rounded-lg border-2 border-black overflow-hidden flex flex-col justify-between">
+                <div>
+                  <img src="https://lh3.googleusercontent.com/aida/ALJJyrDizylsROFfDq2_A0NKlsEcFf8A_jDgzNSBadz908lPK_kCrhwYfKxirpzyu5MObrssvq2XehvnBmI3aft-_wzufm5mZ8qyEwmavOj1poG7zhAWPdRKGm3zkRlXmVJS-XiPZb5u7dYLw95Ye9tdme8_UNt_rwv91dS7Ck9oq4NXGm8DP82DFQqra9Z048SHqVCU67HarMJNrtuoM6e1a8JpNUtiLltIY8emQpPi4XUsNoFBtWmVAZMi76aB" alt="Study Tracker Architecture" class="w-full h-44 object-cover border-b-2 border-black">
+                  <div class="p-5 space-y-3">
+                    <div class="flex items-center justify-between">
+                      <span class="px-2.5 py-0.5 rounded-full bg-black text-white text-[10px] font-bold uppercase tracking-wider">Full-Stack Backend</span>
+                      <span class="text-xs font-mono font-bold text-black">FastAPI + Docker</span>
+                    </div>
+                    <h4 class="text-xl font-black text-black">Study Tracker App</h4>
+                    <p class="text-xs text-[#333333] leading-relaxed">
+                      Full-stack study tracking application for recording study sessions, organizing users, and analyzing study statistics.
+                    </p>
+                    <ul class="text-xs text-[#333333] space-y-1.5 pt-1">
+                      <li>• <strong>RESTful Backend:</strong> Built with FastAPI, Pydantic, psycopg2, date-range filtering, and session tracking.</li>
+                      <li>• <strong>PostgreSQL Database:</strong> Schema with relational constraints, initialization scripts, and persistent Docker storage.</li>
+                      <li>• <strong>Docker Compose:</strong> Multi-service containerization with network isolation and health checks.</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="p-5 pt-0">
+                  <div class="flex flex-wrap gap-1.5 pt-3 border-t border-black text-[11px] font-bold">
+                    <span class="px-2.5 py-1 bg-white border border-black rounded-full">FastAPI</span>
+                    <span class="px-2.5 py-1 bg-white border border-black rounded-full">PostgreSQL</span>
+                    <span class="px-2.5 py-1 bg-white border border-black rounded-full">Docker Compose</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 3. SKILLS TOPIC CARD ================= -->
+      <div id="skills-card" class="space-y-3 chat-bubble-enter scroll-mt-24">
+        <!-- User Query Tag -->
+        <div class="flex justify-end">
+          <div class="bg-black text-white px-4 py-1.5 rounded-full font-semibold text-xs flex items-center gap-2 border border-black">
+            <span>📚</span>
+            <span>What are your skills and certificates? (Skills)</span>
+          </div>
+        </div>
+
+        <!-- Bot Response -->
+        <div class="flex items-start gap-3">
+          <div class="w-9 h-9 rounded-full bg-black text-white flex-shrink-0 flex items-center justify-center font-bold text-xs border border-black">
+            ZF
+          </div>
+          <div class="w-full bg-white p-6 sm:p-8 rounded-2xl rounded-tl-sm border-2 border-black space-y-6">
+            <div class="flex flex-wrap items-center justify-between gap-3 border-b-2 border-black pb-4">
+              <div>
+                <span class="px-3 py-1 rounded-full bg-purple-100 text-purple-900 border border-purple-300 text-xs font-bold uppercase tracking-wider">
+                  Technical Stack
+                </span>
+                <h3 class="text-3xl font-black text-black mt-2">Skills &amp; Certifications</h3>
+              </div>
+              <span class="text-xs font-mono font-bold text-[#555555]">Using image-e576f1.png</span>
+            </div>
+
+            <!-- Skills Categories Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <!-- Languages & Tools -->
+              <div class="bg-[#DCDCDC] p-5 rounded-lg border-2 border-black space-y-3">
+                <div class="text-xs font-black uppercase text-black border-b border-black pb-1">Languages &amp; Tools</div>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-2.5 py-1 rounded-full bg-white border border-black text-xs font-bold text-black">Python</span>
+                  <span class="px-2.5 py-1 rounded-full bg-white border border-black text-xs font-bold text-black">JavaScript</span>
+                  <span class="px-2.5 py-1 rounded-full bg-white border border-black text-xs font-bold text-black">SQL</span>
+                  <span class="px-2.5 py-1 rounded-full bg-white border border-black text-xs font-bold text-black">Docker</span>
+                </div>
+              </div>
+
+              <!-- Frameworks & Libraries -->
+              <div class="bg-[#DCDCDC] p-5 rounded-lg border-2 border-black space-y-3">
+                <div class="text-xs font-black uppercase text-black border-b border-black pb-1">Frameworks &amp; Libraries</div>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-2.5 py-1 rounded-full bg-white border border-black text-xs font-bold text-black">scikit-learn</span>
+                  <span class="px-2.5 py-1 rounded-full bg-white border border-black text-xs font-bold text-black">PyTorch</span>
+                  <span class="px-2.5 py-1 rounded-full bg-white border border-black text-xs font-bold text-black">LangChain</span>
+                  <span class="px-2.5 py-1 rounded-full bg-white border border-black text-xs font-bold text-black">LangGraph</span>
+                  <span class="px-2.5 py-1 rounded-full bg-white border border-black text-xs font-bold text-black">OpenAI SDK</span>
+                </div>
+              </div>
+
+              <!-- Soft Skills -->
+              <div class="bg-[#DCDCDC] p-5 rounded-lg border-2 border-black space-y-3">
+                <div class="text-xs font-black uppercase text-black border-b border-black pb-1">Soft Skills</div>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-2.5 py-1 rounded-full bg-white border border-black text-xs font-bold text-black">Creativity</span>
+                  <span class="px-2.5 py-1 rounded-full bg-white border border-black text-xs font-bold text-black">Problem-Solving</span>
+                  <span class="px-2.5 py-1 rounded-full bg-white border border-black text-xs font-bold text-black">Time Management</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Certificates 3-Column Grid with image-e576f1.png -->
+            <div class="space-y-4 pt-3">
+              <div class="text-xs font-bold uppercase tracking-wider text-black border-b border-black pb-2">
+                Certified Industry Credentials
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                <!-- Cert 1 -->
+                <div class="bg-[#F5F5F5] rounded-lg border-2 border-black overflow-hidden flex flex-col justify-between">
+                  <div>
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrCMgPK3UXb_Pq9rSMlKeN6FcILK1ZEDIX8Ko8x5ud368RbeNh56h2KeY9VODhlJLHlNPAqt5CfbLpFTU1LWMkp43SsSOE9q4Pkw8PBP8K1XvBU89aFshxDNZtHV2OwXcQGdvr547prcX3q8L341vXrOMZKQSR5AulnhepWppwy0TZhUf4S87o3U4Ei7_QZkelV9CcPKTH5Ambbvuw4QuInaV8cTxwFLJe5pdelCHPECbVt7kOSoOeQrWWY" alt="AI Engineering Specialization" class="w-full h-32 object-cover border-b-2 border-black">
+                    <div class="p-3.5 space-y-1">
+                      <div class="text-xs font-bold text-black">AI Engineering Specialization</div>
+                      <div class="text-[11px] font-mono text-[#555555]">Scrimba</div>
+                    </div>
+                  </div>
+                  <div class="p-3.5 pt-0">
+                    <span class="inline-block px-2 py-0.5 rounded-full bg-black text-white text-[10px] font-bold">Verified Specialization</span>
+                  </div>
+                </div>
+
+                <!-- Cert 2 -->
+                <div class="bg-[#F5F5F5] rounded-lg border-2 border-black overflow-hidden flex flex-col justify-between">
+                  <div>
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrCMgPK3UXb_Pq9rSMlKeN6FcILK1ZEDIX8Ko8x5ud368RbeNh56h2KeY9VODhlJLHlNPAqt5CfbLpFTU1LWMkp43SsSOE9q4Pkw8PBP8K1XvBU89aFshxDNZtHV2OwXcQGdvr547prcX3q8L341vXrOMZKQSR5AulnhepWppwy0TZhUf4S87o3U4Ei7_QZkelV9CcPKTH5Ambbvuw4QuInaV8cTxwFLJe5pdelCHPECbVt7kOSoOeQrWWY" alt="Machine Learning Specialization" class="w-full h-32 object-cover border-b-2 border-black">
+                    <div class="p-3.5 space-y-1">
+                      <div class="text-xs font-bold text-black">Machine Learning Specialization</div>
+                      <div class="text-[11px] font-mono text-[#555555]">deeplearning.AI</div>
+                    </div>
+                  </div>
+                  <div class="p-3.5 pt-0">
+                    <span class="inline-block px-2 py-0.5 rounded-full bg-black text-white text-[10px] font-bold">Verified Specialization</span>
+                  </div>
+                </div>
+
+                <!-- Cert 3 -->
+                <div class="bg-[#F5F5F5] rounded-lg border-2 border-black overflow-hidden flex flex-col justify-between">
+                  <div>
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrCMgPK3UXb_Pq9rSMlKeN6FcILK1ZEDIX8Ko8x5ud368RbeNh56h2KeY9VODhlJLHlNPAqt5CfbLpFTU1LWMkp43SsSOE9q4Pkw8PBP8K1XvBU89aFshxDNZtHV2OwXcQGdvr547prcX3q8L341vXrOMZKQSR5AulnhepWppwy0TZhUf4S87o3U4Ei7_QZkelV9CcPKTH5Ambbvuw4QuInaV8cTxwFLJe5pdelCHPECbVt7kOSoOeQrWWY" alt="Agentic AI with LangChain and LangGraph" class="w-full h-32 object-cover border-b-2 border-black">
+                    <div class="p-3.5 space-y-1">
+                      <div class="text-xs font-bold text-black">Agentic AI with LangChain &amp; LangGraph</div>
+                      <div class="text-[11px] font-mono text-[#555555]">IBM</div>
+                    </div>
+                  </div>
+                  <div class="p-3.5 pt-0">
+                    <span class="inline-block px-2 py-0.5 rounded-full bg-black text-white text-[10px] font-bold">Verified Specialization</span>
+                  </div>
+                </div>
+
+                <!-- Cert 4 -->
+                <div class="bg-[#F5F5F5] rounded-lg border-2 border-black overflow-hidden flex flex-col justify-between">
+                  <div>
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrCMgPK3UXb_Pq9rSMlKeN6FcILK1ZEDIX8Ko8x5ud368RbeNh56h2KeY9VODhlJLHlNPAqt5CfbLpFTU1LWMkp43SsSOE9q4Pkw8PBP8K1XvBU89aFshxDNZtHV2OwXcQGdvr547prcX3q8L341vXrOMZKQSR5AulnhepWppwy0TZhUf4S87o3U4Ei7_QZkelV9CcPKTH5Ambbvuw4QuInaV8cTxwFLJe5pdelCHPECbVt7kOSoOeQrWWY" alt="LLM applications with prompt engineering" class="w-full h-32 object-cover border-b-2 border-black">
+                    <div class="p-3.5 space-y-1">
+                      <div class="text-xs font-bold text-black">LLM Applications with Prompt Engineering</div>
+                      <div class="text-[11px] font-mono text-[#555555]">NVIDIA</div>
+                    </div>
+                  </div>
+                  <div class="p-3.5 pt-0">
+                    <span class="inline-block px-2 py-0.5 rounded-full bg-black text-white text-[10px] font-bold">Verified Specialization</span>
+                  </div>
+                </div>
+
+                <!-- Cert 5 -->
+                <div class="bg-[#F5F5F5] rounded-lg border-2 border-black overflow-hidden flex flex-col justify-between">
+                  <div>
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrCMgPK3UXb_Pq9rSMlKeN6FcILK1ZEDIX8Ko8x5ud368RbeNh56h2KeY9VODhlJLHlNPAqt5CfbLpFTU1LWMkp43SsSOE9q4Pkw8PBP8K1XvBU89aFshxDNZtHV2OwXcQGdvr547prcX3q8L341vXrOMZKQSR5AulnhepWppwy0TZhUf4S87o3U4Ei7_QZkelV9CcPKTH5Ambbvuw4QuInaV8cTxwFLJe5pdelCHPECbVt7kOSoOeQrWWY" alt="Python Data Association" class="w-full h-32 object-cover border-b-2 border-black">
+                    <div class="p-3.5 space-y-1">
+                      <div class="text-xs font-bold text-black">Python Data Association</div>
+                      <div class="text-[11px] font-mono text-[#555555]">DataCamp</div>
+                    </div>
+                  </div>
+                  <div class="p-3.5 pt-0">
+                    <span class="inline-block px-2 py-0.5 rounded-full bg-black text-white text-[10px] font-bold">Verified Specialization</span>
+                  </div>
+                </div>
+
+                <!-- Cert 6 -->
+                <div class="bg-[#F5F5F5] rounded-lg border-2 border-black overflow-hidden flex flex-col justify-between">
+                  <div>
+                    <img src="https://lh3.googleusercontent.com/aida/ALJJyrCMgPK3UXb_Pq9rSMlKeN6FcILK1ZEDIX8Ko8x5ud368RbeNh56h2KeY9VODhlJLHlNPAqt5CfbLpFTU1LWMkp43SsSOE9q4Pkw8PBP8K1XvBU89aFshxDNZtHV2OwXcQGdvr547prcX3q8L341vXrOMZKQSR5AulnhepWppwy0TZhUf4S87o3U4Ei7_QZkelV9CcPKTH5Ambbvuw4QuInaV8cTxwFLJe5pdelCHPECbVt7kOSoOeQrWWY" alt="SQL for Data Science" class="w-full h-32 object-cover border-b-2 border-black">
+                    <div class="p-3.5 space-y-1">
+                      <div class="text-xs font-bold text-black">SQL for Data Science</div>
+                      <div class="text-[11px] font-mono text-[#555555]">UCDAVIS</div>
+                    </div>
+                  </div>
+                  <div class="p-3.5 pt-0">
+                    <span class="inline-block px-2 py-0.5 rounded-full bg-black text-white text-[10px] font-bold">Verified Specialization</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 4. FUN TOPIC CARD ================= -->
+      <div id="fun-card" class="space-y-3 chat-bubble-enter scroll-mt-24">
+        <!-- User Query Tag -->
+        <div class="flex justify-end">
+          <div class="bg-black text-white px-4 py-1.5 rounded-full font-semibold text-xs flex items-center gap-2 border border-black">
+            <span>🎉</span>
+            <span>Tell me something fun! (Fun)</span>
+          </div>
+        </div>
+
+        <!-- Bot Response -->
+        <div class="flex items-start gap-3">
+          <div class="w-9 h-9 rounded-full bg-black text-white flex-shrink-0 flex items-center justify-center font-bold text-xs border border-black">
+            ZF
+          </div>
+          <div class="w-full bg-white p-6 sm:p-8 rounded-2xl rounded-tl-sm border-2 border-black space-y-6">
+            <div class="flex items-center justify-between border-b-2 border-black pb-4">
+              <div>
+                <span class="px-3 py-1 rounded-full bg-pink-100 text-pink-900 border border-pink-300 text-xs font-bold uppercase tracking-wider">
+                  Behind the Code
+                </span>
+                <h3 class="text-3xl font-black text-black mt-2">Fun Facts &amp; Musings</h3>
+              </div>
+              <span class="text-xs font-mono font-bold text-[#555555]">Personal Insights</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="p-5 bg-[#DCDCDC] rounded-lg border-2 border-black space-y-2">
+                <div class="text-3xl">🤖</div>
+                <h4 class="font-black text-black text-base">Control Systems Meets LangGraph</h4>
+                <p class="text-xs sm:text-sm text-[#333333] leading-relaxed">
+                  Studying control systems engineering gave me a natural intuition for designing cyclic feedback loops in LangGraph: PID controllers and multi-agent critique routers share the exact same feedback error-correction philosophy!
+                </p>
+              </div>
+
+              <div class="p-5 bg-[#DCDCDC] rounded-lg border-2 border-black space-y-2">
+                <div class="text-3xl">🍿</div>
+                <h4 class="font-black text-black text-base">PopChoice Movie Night Dilemma</h4>
+                <p class="text-xs sm:text-sm text-[#333333] leading-relaxed">
+                  PopChoice was born because I spent more time browsing Netflix menus than actually watching movies. Building a vector embedding recommender was my engineering excuse to solve movie paralysis.
+                </p>
+              </div>
+
+              <div class="p-5 bg-[#DCDCDC] rounded-lg border-2 border-black space-y-2">
+                <div class="text-3xl">☕</div>
+                <h4 class="font-black text-black text-base">Prompt Precision &amp; Coffee</h4>
+                <p class="text-xs sm:text-sm text-[#333333] leading-relaxed">
+                  Refining deterministic system prompts and evaluating edge cases runs best with strong Egyptian and Turkish coffee.
+                </p>
+              </div>
+
+              <div class="p-5 bg-[#DCDCDC] rounded-lg border-2 border-black space-y-2">
+                <div class="text-3xl">⚙️</div>
+                <h4 class="font-black text-black text-base">From Mansoura to Global AI</h4>
+                <p class="text-xs sm:text-sm text-[#333333] leading-relaxed">
+                  Based in Mansoura, Egypt, but building for distributed systems and global teams with asynchronous communication and containerized Docker environments.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= 5. CONTACT TOPIC CARD ================= -->
+      <div id="contact-card" class="space-y-3 chat-bubble-enter scroll-mt-24">
+        <!-- User Query Tag -->
+        <div class="flex justify-end">
+          <div class="bg-black text-white px-4 py-1.5 rounded-full font-semibold text-xs flex items-center gap-2 border border-black">
+            <span>✉</span>
+            <span>How can I reach you? (Contact)</span>
+          </div>
+        </div>
+
+        <!-- Bot Response -->
+        <div class="flex items-start gap-3">
+          <div class="w-9 h-9 rounded-full bg-black text-white flex-shrink-0 flex items-center justify-center font-bold text-xs border border-black">
+            ZF
+          </div>
+          <div class="w-full bg-white p-6 sm:p-8 rounded-2xl rounded-tl-sm border-2 border-black space-y-6">
+            <div class="flex items-center justify-between border-b-2 border-black pb-4">
+              <div>
+                <span class="px-3 py-1 rounded-full bg-[#ED1C24] text-white text-xs font-bold uppercase tracking-wider">
+                  Direct Communication
+                </span>
+                <h3 class="text-3xl font-black text-black mt-2">Get in Touch with Ziyad</h3>
+              </div>
+              <span class="text-xs font-mono font-bold text-[#00AA44]">● Ready to Connect</span>
+            </div>
+
+            <p class="text-sm text-[#333333] leading-relaxed">
+              Seeking an entry-level AI Engineering opportunity to build and deploy scalable AI solutions for real-world problems. Let&#39;s discuss your agentic workflows and production LLM challenges.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <!-- Email -->
+              <a href="mailto:ziyad.fouda7@gmail.com" class="p-5 bg-[#DCDCDC] hover:bg-black hover:text-white group rounded-lg border-2 border-black transition-all space-y-1 block">
+                <div class="text-xs font-bold uppercase text-[#ED1C24] group-hover:text-[#ED1C24]">Email</div>
+                <div class="text-base font-black text-black group-hover:text-white truncate">ziyad.fouda7@gmail.com</div>
+                <div class="text-xs text-[#555555] group-hover:text-[#CCCCCC]">Direct inbox contact</div>
+              </a>
+
+              <!-- Phone -->
+              <a href="tel:+201069640521" class="p-5 bg-[#DCDCDC] hover:bg-black hover:text-white group rounded-lg border-2 border-black transition-all space-y-1 block">
+                <div class="text-xs font-bold uppercase text-black group-hover:text-white">Phone &amp; WhatsApp</div>
+                <div class="text-base font-black text-black group-hover:text-white">+20 1069640521</div>
+                <div class="text-xs text-[#555555] group-hover:text-[#CCCCCC]">Mansoura, Egypt (GMT+2)</div>
+              </a>
+
+              <!-- LinkedIn -->
+              <a href="https://linkedin.com/in/zfouda" target="_blank" rel="noreferrer" class="p-5 bg-[#DCDCDC] hover:bg-black hover:text-white group rounded-lg border-2 border-black transition-all space-y-1 block">
+                <div class="text-xs font-bold uppercase text-black group-hover:text-white">LinkedIn</div>
+                <div class="text-base font-black text-black group-hover:text-white">linkedin.com/in/zfouda</div>
+                <div class="text-xs text-[#555555] group-hover:text-[#CCCCCC]">Professional Network</div>
+              </a>
+
+              <!-- GitHub -->
+              <a href="https://github.com/zFoudaz" target="_blank" rel="noreferrer" class="p-5 bg-[#DCDCDC] hover:bg-black hover:text-white group rounded-lg border-2 border-black transition-all space-y-1 block">
+                <div class="text-xs font-bold uppercase text-black group-hover:text-white">GitHub</div>
+                <div class="text-base font-black text-black group-hover:text-white">github.com/zFoudaz</div>
+                <div class="text-xs text-[#555555] group-hover:text-[#CCCCCC]">Code repositories &amp; demos</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Sticky Bottom Interactive Prompt & Choice Bar (Inspired by image-3b0569.png) -->
+  <footer class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t-2 border-black p-4 z-50">
+    <div class="max-w-4xl mx-auto space-y-3">
+
+      <!-- Bar Title -->
+      <div class="flex items-center justify-between">
+        <div class="text-[11px] font-bold text-[#555555] uppercase tracking-wider flex items-center gap-1.5">
+          <span>Jump to Topic</span>
+        </div>
+        <div class="text-[11px] font-mono text-[#777777]">
+          cv_data: loaded (5 topics)
+        </div>
+      </div>
+
+      <!-- Pill Buttons (Me, Projects, Skills, Fun, Contact) -->
+      <div class="flex items-center gap-2 overflow-x-auto pb-1">
+        <!-- Me -->
+        <button onclick="scrollToTopic(&#39;me-card&#39;)" class="topic-btn flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFFFFF] hover:bg-[#DCDCDC] text-black font-bold text-xs border-2 border-black transition-all active:scale-95 shadow-sm whitespace-nowrap">
+          <span class="w-4 h-4 rounded-full bg-[#00AA44]/20 text-[#008833] flex items-center justify-center text-[10px] font-bold">☺</span>
+          <span>Me</span>
+        </button>
+
+        <!-- Projects -->
+        <button onclick="scrollToTopic(&#39;projects-card&#39;)" class="topic-btn flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFFFFF] hover:bg-[#DCDCDC] text-black font-bold text-xs border-2 border-black transition-all active:scale-95 shadow-sm whitespace-nowrap">
+          <span class="w-4 h-4 rounded-full bg-[#ED1C24]/20 text-[#ED1C24] flex items-center justify-center text-[10px] font-bold">💼</span>
+          <span>Projects</span>
+        </button>
+
+        <!-- Skills -->
+        <button onclick="scrollToTopic(&#39;skills-card&#39;)" class="topic-btn flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFFFFF] hover:bg-[#DCDCDC] text-black font-bold text-xs border-2 border-black transition-all active:scale-95 shadow-sm whitespace-nowrap">
+          <span class="w-4 h-4 rounded-full bg-purple-100 text-purple-700 flex items-center justify-center text-[10px] font-bold">📚</span>
+          <span>Skills</span>
+        </button>
+
+        <!-- Fun -->
+        <button onclick="scrollToTopic(&#39;fun-card&#39;)" class="topic-btn flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFFFFF] hover:bg-[#DCDCDC] text-black font-bold text-xs border-2 border-black transition-all active:scale-95 shadow-sm whitespace-nowrap">
+          <span class="w-4 h-4 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-[10px] font-bold">🎉</span>
+          <span>Fun</span>
+        </button>
+
+        <!-- Contact -->
+        <button onclick="scrollToTopic(&#39;contact-card&#39;)" class="topic-btn flex items-center gap-2 px-4 py-2 rounded-full bg-[#FFFFFF] hover:bg-[#DCDCDC] text-black font-bold text-xs border-2 border-black transition-all active:scale-95 shadow-sm whitespace-nowrap">
+          <span class="w-4 h-4 rounded-full bg-yellow-100 text-yellow-800 flex items-center justify-center text-[10px] font-bold">✉</span>
+          <span>Contact</span>
+        </button>
+      </div>
+
+      <!-- Freeform message dispatch simulation -->
+      <form onsubmit="handleCustomInput(event)" class="relative flex items-center">
+        <input id="user-input" type="text" placeholder="Ask a question or click any topic above..." class="w-full pl-5 pr-14 py-3 rounded-full bg-[#F5F5F5] border-2 border-black text-xs sm:text-sm font-medium text-black placeholder-[#777777] focus:outline-none focus:bg-white transition-all shadow-inner">
+        <button type="submit" class="absolute right-2 w-9 h-9 rounded-full bg-[#ED1C24] hover:bg-black text-white flex items-center justify-center transition-colors shadow-sm" title="Send">
+          <svg class="w-4 h-4 transform rotate-90" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 19V5m-7 7l7-7 7 7"></path></svg>
+        </button>
+      </form>
+    </div>
+  </footer>
+
+  <script>
+    function scrollToTopic(id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function handleCustomInput(e) {
+      e.preventDefault();
+      const val = document.getElementById('user-input').value.trim().toLowerCase();
+      if (!val) return;
+      document.getElementById('user-input').value = '';
+
+      if (val.includes('project') || val.includes('work') || val.includes('genlearn') || val.includes('langgraph')) {
+        scrollToTopic('projects-card');
+      } else if (val.includes('skill') || val.includes('cert') || val.includes('python') || val.includes('pytorch')) {
+        scrollToTopic('skills-card');
+      } else if (val.includes('fun') || val.includes('hobby')) {
+        scrollToTopic('fun-card');
+      } else if (val.includes('contact') || val.includes('email') || val.includes('phone') || val.includes('reach')) {
+        scrollToTopic('contact-card');
+      } else {
+        scrollToTopic('me-card');
+      }
+    }
+  </script>
+
+
+</body></html>
