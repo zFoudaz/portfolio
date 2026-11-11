@@ -67,4 +67,7 @@ export interface ContactChannel {
   sublabel: string;
   href: string;
   external?: boolean;
+  copyValue?: string;
+  copyLabel?: string;
+  whatsappUrl?: string;
 }

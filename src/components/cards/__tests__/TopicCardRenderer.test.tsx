@@ -1,5 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect } from 'vitest';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { describe, it, expect, vi } from 'vitest';
 import { TopicCardRenderer } from '../TopicCardRenderer';
 
 describe('TopicCardRenderer', () => {
@@ -75,5 +75,30 @@ describe('TopicCardRenderer', () => {
     const catImg = screen.getByAltText('Mshmsh');
     fireEvent.click(catImg);
     expect(screen.getByTestId('image-lightbox-modal')).toBeInTheDocument();
+  });
+
+  it('supports one-click Copy Email, Copy Phone, and direct WhatsApp link in ContactCard', async () => {
+    const writeTextMock = vi.fn().mockResolvedValue(undefined);
+    Object.assign(navigator, {
+      clipboard: { writeText: writeTextMock },
+    });
+
+    render(<TopicCardRenderer topicId="contact" />);
+
+    const copyEmailBtn = screen.getByRole('button', { name: /Copy Email/i });
+    const copyPhoneBtn = screen.getByRole('button', { name: /Copy Phone/i });
+    const whatsappLink = screen.getByRole('link', { name: /WhatsApp Chat/i });
+
+    expect(whatsappLink).toHaveAttribute('href', 'https://wa.me/201069640521');
+    expect(whatsappLink).toHaveAttribute('target', '_blank');
+
+    fireEvent.click(copyEmailBtn);
+    expect(writeTextMock).toHaveBeenCalledWith('ziyad.fouda7@gmail.com');
+    await waitFor(() => {
+      expect(screen.getByText(/Copied! ✓/i)).toBeInTheDocument();
+    });
+
+    fireEvent.click(copyPhoneBtn);
+    expect(writeTextMock).toHaveBeenCalledWith('+201069640521');
   });
 });

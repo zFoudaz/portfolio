@@ -344,6 +344,8 @@ export const PORTFOLIO_DATA = {
       sublabel: 'Direct inbox contact',
       href: 'mailto:ziyad.fouda7@gmail.com',
       external: false,
+      copyValue: 'ziyad.fouda7@gmail.com',
+      copyLabel: 'Copy Email',
     },
     {
       label: 'Phone & WhatsApp',
@@ -352,6 +354,9 @@ export const PORTFOLIO_DATA = {
       sublabel: 'Mansoura, Egypt (GMT+2)',
       href: 'tel:+201069640521',
       external: false,
+      copyValue: '+201069640521',
+      copyLabel: 'Copy Phone',
+      whatsappUrl: 'https://wa.me/201069640521',
     },
     {
       label: 'LinkedIn',
