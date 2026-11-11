@@ -1,33 +1,44 @@
 'use client';
 
 import React, { useState } from 'react';
+import { ExternalLink } from 'lucide-react';
 import { PORTFOLIO_DATA } from '@/data/portfolioData';
 import { ProjectItem } from '@/types/portfolio';
 
 function ProjectVisualHeader({ project }: { project: ProjectItem }) {
   const [imgFailed, setImgFailed] = useState(false);
 
-  if (imgFailed) {
-    return (
-      <div
-        data-testid={`project-fallback-${project.id}`}
-        className="w-full h-44 bg-gradient-to-br from-black via-[#1f1f1f] to-[#333333] border-b-2 border-black flex flex-col items-center justify-center p-4 text-center"
-      >
-        <span className="px-2.5 py-0.5 rounded bg-[#ED1C24] text-white font-mono text-[10px] font-bold uppercase tracking-wider mb-2">
-          {project.techFocus}
-        </span>
-        <span className="text-white font-black text-lg tracking-tight">{project.title}</span>
-      </div>
-    );
-  }
-
   return (
-    <img
-      src={project.imageUrl}
-      alt={project.imageAlt}
-      onError={() => setImgFailed(true)}
-      className="w-full h-44 object-cover border-b-2 border-black bg-[#1a1a1a]"
-    />
+    <a
+      href={project.repoUrl}
+      target="_blank"
+      rel="noreferrer"
+      title={`View ${project.title} on GitHub`}
+      className="block relative group overflow-hidden border-b-2 border-black bg-[#1a1a1a]"
+    >
+      {imgFailed ? (
+        <div
+          data-testid={`project-fallback-${project.id}`}
+          className="w-full h-44 bg-gradient-to-br from-black via-[#1f1f1f] to-[#333333] flex flex-col items-center justify-center p-4 text-center"
+        >
+          <span className="px-2.5 py-0.5 rounded bg-[#ED1C24] text-white font-mono text-[10px] font-bold uppercase tracking-wider mb-2">
+            {project.techFocus}
+          </span>
+          <span className="text-white font-black text-lg tracking-tight">{project.title}</span>
+        </div>
+      ) : (
+        <img
+          src={project.imageUrl}
+          alt={project.imageAlt}
+          onError={() => setImgFailed(true)}
+          className="w-full h-44 object-cover transition-transform duration-300 group-hover:scale-105"
+        />
+      )}
+      <div className="absolute top-2.5 right-2.5 px-2.5 py-1 rounded-full bg-black/85 text-white text-[10px] font-mono font-bold flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity border border-white/20">
+        <span>GitHub Repo</span>
+        <ExternalLink className="w-3 h-3" />
+      </div>
+    </a>
   );
 }
 
@@ -68,7 +79,20 @@ export function ProjectsCard() {
                     {project.techFocus}
                   </span>
                 </div>
-                <h4 className="text-xl font-black text-black">{project.title}</h4>
+                <div className="flex items-center justify-between gap-2">
+                  <h4 className="text-xl font-black text-black">{project.title}</h4>
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#ED1C24] hover:bg-black text-white text-xs font-bold border border-black transition-colors shadow-sm flex-shrink-0"
+                    >
+                      <span>Live Demo</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  )}
+                </div>
                 <p className="text-xs text-[#333333] leading-relaxed">{project.description}</p>
                 <ul className="text-xs text-[#333333] space-y-1.5 pt-1">
                   {project.highlights.map((h) => (

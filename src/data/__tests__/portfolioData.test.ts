@@ -19,8 +19,26 @@ describe('portfolioData & keyword routing', () => {
     expect(matchTopicFromInput('What is the weather in Cairo?')).toBeNull();
   });
 
-  it('contains all 4 projects and 6 certificates without Stitch debug filenames', () => {
+  it('contains all 4 projects and 6 certificates with local webp images and repo/live links', () => {
     expect(PORTFOLIO_DATA.projects).toHaveLength(4);
     expect(PORTFOLIO_DATA.certificates).toHaveLength(6);
+
+    const [genlearn, researchAgent, popchoice, studyTracker] = PORTFOLIO_DATA.projects;
+    expect(genlearn.imageUrl).toBe('/images/projects/genlearn.webp');
+    expect(genlearn.repoUrl).toBe('https://github.com/Gen-Learn');
+
+    expect(researchAgent.imageUrl).toBe('/images/projects/research_agent.webp');
+    expect(researchAgent.repoUrl).toBe('https://github.com/zFoudaz/Research-agent-with-LangGraph');
+
+    expect(popchoice.imageUrl).toBe('/images/projects/pop_choice.webp');
+    expect(popchoice.repoUrl).toBe('https://github.com/zFoudaz/popChoice-api');
+    expect(popchoice.liveUrl).toBe('https://popchoice.ziyadfouda.site/');
+
+    expect(studyTracker.imageUrl).toBe('/images/projects/study_tracker_app.webp');
+    expect(studyTracker.repoUrl).toBe('https://github.com/zFoudaz/Study-Tracker-App');
+
+    PORTFOLIO_DATA.certificates.forEach((cert) => {
+      expect(cert.imageUrl).toMatch(/^\/images\/certificates\/.+\.webp$/);
+    });
   });
 });

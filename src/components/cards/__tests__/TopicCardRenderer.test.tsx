@@ -10,12 +10,21 @@ describe('TopicCardRenderer', () => {
     expect(screen.getByText('AI Engineer Intern')).toBeInTheDocument();
   });
 
-  it('renders ProjectsCard with 4 projects and clean header label', () => {
+  it('renders ProjectsCard with 4 projects, clickable repo image links, and PopChoice live demo button', () => {
     render(<TopicCardRenderer topicId="projects" />);
     expect(screen.getByText('Engineering Projects')).toBeInTheDocument();
     expect(screen.getByText('4 Featured Systems')).toBeInTheDocument();
     expect(screen.getByText('GenLearn')).toBeInTheDocument();
     expect(screen.getByText('Research Agent with LangGraph')).toBeInTheDocument();
+
+    const genlearnImg = screen.getByAltText('GenLearn Project Architecture');
+    const genlearnLink = genlearnImg.closest('a');
+    expect(genlearnLink).toHaveAttribute('href', 'https://github.com/Gen-Learn');
+    expect(genlearnLink).toHaveAttribute('target', '_blank');
+
+    const liveDemoLink = screen.getByRole('link', { name: /Live Demo/i });
+    expect(liveDemoLink).toHaveAttribute('href', 'https://popchoice.ziyadfouda.site/');
+    expect(liveDemoLink).toHaveAttribute('target', '_blank');
   });
 
   it('renders SkillsCard with skills and 6 credentials', () => {

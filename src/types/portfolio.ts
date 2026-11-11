@@ -37,6 +37,8 @@ export interface ProjectItem {
   tags: string[];
   imageUrl: string;
   imageAlt: string;
+  repoUrl: string;
+  liveUrl?: string;
 }
 
 export interface SkillGroup {
