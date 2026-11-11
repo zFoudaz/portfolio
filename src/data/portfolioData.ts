@@ -304,11 +304,11 @@ export const PORTFOLIO_DATA = {
   ] satisfies CertificateItem[],
   funFacts: [
     {
-      emoji: '🎮',
-      title: 'Competitive Gaming (Valorant)',
+      emoji: '❤️',
+      title: 'My Family Is Everything',
       description:
-        'When I step away from training models and building AI agents, you will usually find me queuing up in Valorant. Tactical team play, quick decision-making, and clutching rounds are my favorite way to unwind.',
-      images: [{ src: '/images/fun/valorant.webp', caption: 'Valorant' }],
+        'Above every project, milestone, or career goal, my family comes first. Their constant support and encouragement are the foundation behind everything I build.',
+      images: [{ src: '/images/fun/family.webp', caption: 'Family' }],
     },
     {
       emoji: '🐱',
@@ -321,18 +321,18 @@ export const PORTFOLIO_DATA = {
       ],
     },
     {
-      emoji: '❤️',
-      title: 'My Family Is Everything',
-      description:
-        'Above every project, milestone, or career goal, my family comes first. Their constant support and encouragement are the foundation behind everything I build.',
-      images: [{ src: '/images/fun/family.webp', caption: 'Family' }],
-    },
-    {
       emoji: '🎧',
       title: 'Abyusif - Wa7ed Wa7ed',
       description:
         'Big fan of Egyptian rap pioneer Abyusif, especially his iconic 2018 album "Wa7ed Wa7ed". His raw introspective storytelling, emotional depth, and sharp lyricism make it a timeless classic on my coding playlist.',
       images: [{ src: '/images/fun/wa7ed_wa7ed.webp', caption: 'Abyusif - Wa7ed Wa7ed' }],
+    },
+    {
+      emoji: '🎮',
+      title: 'Competitive Gaming (Valorant)',
+      description:
+        'When I step away from training models and building AI agents, you will usually find me queuing up in Valorant. Tactical team play, quick decision-making, and clutching rounds are my favorite way to unwind.',
+      images: [{ src: '/images/fun/valorant.webp', caption: 'Valorant' }],
     },
   ] satisfies FunFactItem[],
   contact: [

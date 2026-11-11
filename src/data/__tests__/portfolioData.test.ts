@@ -40,5 +40,12 @@ describe('portfolioData & keyword routing', () => {
     PORTFOLIO_DATA.certificates.forEach((cert) => {
       expect(cert.imageUrl).toMatch(/^\/images\/certificates\/.+\.webp$/);
     });
+
+    expect(PORTFOLIO_DATA.funFacts.map((f) => f.title)).toEqual([
+      'My Family Is Everything',
+      'Cat Person - Mshmsh & Bessela',
+      'Abyusif - Wa7ed Wa7ed',
+      'Competitive Gaming (Valorant)',
+    ]);
   });
 });
