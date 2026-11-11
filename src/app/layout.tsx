@@ -14,10 +14,31 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
+const siteTitle = 'Ziyad Fouda - Interactive AI Engineer Portfolio';
+const siteDescription =
+  'AI Engineer based in Mansoura, Egypt. Explore production projects in LangChain, LangGraph, Azure AI Foundry, RAG, and Machine Learning.';
+
 export const metadata: Metadata = {
-  title: 'Ziyad Fouda - Interactive AI Engineer Portfolio',
-  description:
-    'Interactive AI Engineer Portfolio of Ziyad Fouda. Explore projects in LangChain, LangGraph, Azure AI Foundry, RAG, and Machine Learning.',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://ziyadfouda.site'),
+  title: siteTitle,
+  description: siteDescription,
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
+  openGraph: {
+    title: siteTitle,
+    description: siteDescription,
+    type: 'website',
+    locale: 'en_US',
+    siteName: 'Ziyad Fouda Portfolio',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: siteTitle,
+    description: siteDescription,
+  },
 };
 
 export default function RootLayout({
