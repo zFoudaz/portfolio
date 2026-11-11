@@ -18,7 +18,7 @@ describe('PortfolioChat interactive flow', () => {
     expect(screen.getByText(/Available for AI Engineering Roles/i)).toBeInTheDocument();
     const cvLink = screen.getByRole('link', { name: /Download CV \(PDF\)/i });
     expect(cvLink).toHaveAttribute('href', '/Ziyad_Fouda_Resume.pdf');
-    expect(screen.getByText(/Tell me about GenLearn & LangGraph/i)).toBeInTheDocument();
+    expect(screen.getByText(/How do GenLearn & LangGraph work\?/i)).toBeInTheDocument();
 
     const avatars = screen.getAllByAltText('Ziyad Fouda');
     expect(avatars.length).toBeGreaterThanOrEqual(2);

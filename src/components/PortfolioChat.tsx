@@ -10,8 +10,8 @@ import { TOPIC_OPTIONS, PORTFOLIO_DATA, matchTopicFromInput } from '@/data/portf
 import { TopicId, ChatMessageItem } from '@/types/portfolio';
 
 const STARTER_PROMPTS = [
-  'Tell me about GenLearn & LangGraph',
-  'Show me your 4 AI internships',
+  'How do GenLearn & LangGraph work?',
+  'What are your 4 AI internships?',
   'What is your AI tech stack?',
   'How can we connect?',
 ];
