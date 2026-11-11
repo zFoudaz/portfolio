@@ -34,7 +34,7 @@ describe('TopicCardRenderer', () => {
     expect(screen.getByText('AI Engineering Specialization')).toBeInTheDocument();
   });
 
-  it('renders FunCard with Valorant image, Mshmsh & Bessela cats, Family, and Breaking Bad without em-dashes, and ContactCard accurately', () => {
+  it('renders FunCard with Valorant image, Mshmsh & Bessela cats, Family, and Abyusif Wa7ed Wa7ed without em-dashes, and ContactCard accurately', () => {
     const { rerender } = render(<TopicCardRenderer topicId="fun" />);
     expect(screen.getByText('Fun Facts & Musings')).toBeInTheDocument();
     expect(screen.getByText('Cat Person - Mshmsh & Bessela')).toBeInTheDocument();
@@ -42,7 +42,8 @@ describe('TopicCardRenderer', () => {
     expect(screen.getAllByText(/Mshmsh/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Bessela/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/Family Is Everything/i)).toBeInTheDocument();
-    expect(screen.getAllByText(/Breaking Bad/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Abyusif/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Wa7ed Wa7ed/i).length).toBeGreaterThan(0);
 
     rerender(<TopicCardRenderer topicId="contact" />);
     expect(screen.getByText('ziyad.fouda7@gmail.com')).toBeInTheDocument();

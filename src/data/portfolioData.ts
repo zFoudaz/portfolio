@@ -327,10 +327,11 @@ export const PORTFOLIO_DATA = {
         'Above every project, milestone, or career goal, my family comes first. Their constant support and encouragement are the foundation behind everything I build.',
     },
     {
-      emoji: '🧪',
-      title: 'Breaking Bad Enthusiast',
+      emoji: '🎧',
+      title: 'Abyusif - Wa7ed Wa7ed',
       description:
-        'Huge fan of the Breaking Bad universe - peak storytelling, character development, and cinematography that never gets old no matter how many times I rewatch it.',
+        'Big fan of Egyptian rap pioneer Abyusif, especially his iconic 2018 album "Wa7ed Wa7ed". His raw introspective storytelling, emotional depth, and sharp lyricism make it a timeless classic on my coding playlist.',
+      images: [{ src: '/images/fun/wa7ed_wa7ed.webp', caption: 'Abyusif - Wa7ed Wa7ed' }],
     },
   ] satisfies FunFactItem[],
   contact: [
@@ -413,7 +414,10 @@ export function matchTopicFromInput(input: string): TopicId | null {
     val.includes('mshmsh') ||
     val.includes('bessela') ||
     val.includes('family') ||
-    val.includes('breaking bad') ||
+    val.includes('abyusif') ||
+    val.includes('wa7ed') ||
+    val.includes('music') ||
+    val.includes('rap') ||
     val.includes('fact') ||
     val.includes('movie')
   ) {

@@ -8,9 +8,10 @@ function CatPhotoTile({ src, caption }: { src: string; caption: string }) {
 
   if (failed) {
     const isCat = caption === 'Mshmsh' || caption === 'Bessela';
+    const isMusic = caption.toLowerCase().includes('abyusif') || caption.toLowerCase().includes('wa7ed');
     return (
       <div className="bg-white/80 rounded-lg border-2 border-dashed border-black p-3 flex flex-col items-center justify-center text-center h-36">
-        <span className="text-2xl mb-1">{isCat ? '🐾' : '🎯'}</span>
+        <span className="text-2xl mb-1">{isCat ? '🐾' : isMusic ? '🎵' : '🎯'}</span>
         <span className="text-xs font-black text-black">{caption}</span>
         <span className="text-[10px] font-mono text-[#555555] mt-0.5">
           Add {src.replace('/images/fun/', '')}
