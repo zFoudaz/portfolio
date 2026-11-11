@@ -1,0 +1,34 @@
+import { render, screen } from '@testing-library/react';
+import { describe, it, expect } from 'vitest';
+import { TopicCardRenderer } from '../TopicCardRenderer';
+
+describe('TopicCardRenderer', () => {
+  it('renders MeCard with education, GPA, and work experience', () => {
+    render(<TopicCardRenderer topicId="me" />);
+    expect(screen.getByText('Mansoura University')).toBeInTheDocument();
+    expect(screen.getByText('GPA: 3.7 / 4.0')).toBeInTheDocument();
+    expect(screen.getByText('AI Engineer Intern')).toBeInTheDocument();
+  });
+
+  it('renders ProjectsCard with 4 projects and clean header label', () => {
+    render(<TopicCardRenderer topicId="projects" />);
+    expect(screen.getByText('Engineering Projects')).toBeInTheDocument();
+    expect(screen.getByText('4 Featured Systems')).toBeInTheDocument();
+    expect(screen.getByText('GenLearn')).toBeInTheDocument();
+    expect(screen.getByText('Research Agent with LangGraph')).toBeInTheDocument();
+  });
+
+  it('renders SkillsCard with skills and 6 credentials', () => {
+    render(<TopicCardRenderer topicId="skills" />);
+    expect(screen.getByText('Skills & Certifications')).toBeInTheDocument();
+    expect(screen.getByText('6 Verified Credentials')).toBeInTheDocument();
+    expect(screen.getByText('AI Engineering Specialization')).toBeInTheDocument();
+  });
+
+  it('renders FunCard and ContactCard accurately', () => {
+    const { rerender } = render(<TopicCardRenderer topicId="fun" />);
+    expect(screen.getByText('Fun Facts & Musings')).toBeInTheDocument();
+    rerender(<TopicCardRenderer topicId="contact" />);
+    expect(screen.getByText('ziyad.fouda7@gmail.com')).toBeInTheDocument();
+  });
+});
