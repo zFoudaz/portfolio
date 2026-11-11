@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from './Header';
 import { BottomDock } from './BottomDock';
+import { Avatar } from './Avatar';
 import { TopicCardRenderer } from './cards/TopicCardRenderer';
 import { TOPIC_OPTIONS, matchTopicFromInput } from '@/data/portfolioData';
 import { TopicId, ChatMessageItem } from '@/types/portfolio';
@@ -126,9 +127,7 @@ export function PortfolioChat(): React.JSX.Element {
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             className="flex items-start gap-3"
           >
-            <div className="w-9 h-9 rounded-full bg-black text-white flex-shrink-0 flex items-center justify-center font-bold text-xs border border-black">
-              ZF
-            </div>
+            <Avatar size="sm" />
             <div className="space-y-4 max-w-2xl w-full">
               <div className="bg-white p-5 sm:p-6 rounded-2xl rounded-tl-sm border-2 border-black shadow-sm space-y-3">
                 <div className="flex items-center gap-2">
@@ -188,9 +187,7 @@ export function PortfolioChat(): React.JSX.Element {
                   transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                   className="flex items-start gap-3 scroll-mt-24"
                 >
-                  <div className="w-9 h-9 rounded-full bg-black text-white flex-shrink-0 flex items-center justify-center font-bold text-xs border border-black">
-                    ZF
-                  </div>
+                  <Avatar size="sm" />
                   {msg.topicId ? (
                     <TopicCardRenderer topicId={msg.topicId} />
                   ) : (
@@ -226,9 +223,7 @@ export function PortfolioChat(): React.JSX.Element {
               className="flex items-center gap-3 scroll-mt-24"
               data-testid="typing-indicator"
             >
-              <div className="w-9 h-9 rounded-full bg-black text-white flex-shrink-0 flex items-center justify-center font-bold text-xs border border-black">
-                ZF
-              </div>
+              <Avatar size="sm" />
               <div className="bg-white px-4 py-3 rounded-2xl rounded-tl-sm border-2 border-black shadow-sm flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#ED1C24] animate-bounce [animation-delay:-0.3s]" />
                 <span className="w-2 h-2 rounded-full bg-black animate-bounce [animation-delay:-0.15s]" />

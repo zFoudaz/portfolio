@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { PORTFOLIO_DATA } from '@/data/portfolioData';
+import { Avatar } from './Avatar';
 
 export function Header({ onContactClick }: { onContactClick: () => void }): React.JSX.Element {
   const { profile } = PORTFOLIO_DATA;
@@ -10,9 +11,7 @@ export function Header({ onContactClick }: { onContactClick: () => void }): Reac
     <header className="sticky top-0 flex-none bg-white/95 backdrop-blur-md border-b-2 border-black z-30">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center font-extrabold text-sm border-2 border-black flex-shrink-0">
-            {profile.initials}
-          </div>
+          <Avatar size="md" />
           <div>
             <div className="flex items-center gap-2">
               <span className="font-black text-base tracking-tight text-black">

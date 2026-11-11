@@ -12,9 +12,12 @@ describe('PortfolioChat interactive flow', () => {
     vi.useRealTimers();
   });
 
-  it('renders only the intro welcome message initially (no topic cards pre-rendered)', () => {
+  it('renders only the intro welcome message initially (no topic cards pre-rendered) with profile avatar', () => {
     render(<PortfolioChat />);
     expect(screen.getByText(/SYSTEM ONLINE/i)).toBeInTheDocument();
+    const avatars = screen.getAllByAltText('Ziyad Fouda');
+    expect(avatars.length).toBeGreaterThanOrEqual(2);
+    expect(avatars[0]).toHaveAttribute('src', '/images/ziyad.webp');
     expect(screen.queryByText('Engineering Projects')).not.toBeInTheDocument();
     expect(screen.queryByText('Mansoura University')).not.toBeInTheDocument();
   });

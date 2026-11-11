@@ -62,6 +62,7 @@ export const PORTFOLIO_DATA = {
   profile: {
     name: 'Ziyad Fouda',
     initials: 'ZF',
+    avatarUrl: '/images/ziyad.webp',
     role: 'AI Engineer | Computer Engineering Graduate',
     headerSubtitle: 'AI Engineer • Mansoura, Egypt',
     location: 'Mansoura, Egypt',
