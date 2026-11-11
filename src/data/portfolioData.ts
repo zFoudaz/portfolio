@@ -325,6 +325,7 @@ export const PORTFOLIO_DATA = {
       title: 'My Family Is Everything',
       description:
         'Above every project, milestone, or career goal, my family comes first. Their constant support and encouragement are the foundation behind everything I build.',
+      images: [{ src: '/images/fun/family.webp', caption: 'Family' }],
     },
     {
       emoji: '🎧',

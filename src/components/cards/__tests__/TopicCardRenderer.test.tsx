@@ -42,6 +42,7 @@ describe('TopicCardRenderer', () => {
     expect(screen.getAllByText(/Mshmsh/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Bessela/i).length).toBeGreaterThan(0);
     expect(screen.getByText(/Family Is Everything/i)).toBeInTheDocument();
+    expect(screen.getByAltText('Family')).toHaveAttribute('src', '/images/fun/family.webp');
     expect(screen.getAllByText(/Abyusif/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Wa7ed Wa7ed/i).length).toBeGreaterThan(0);
 
