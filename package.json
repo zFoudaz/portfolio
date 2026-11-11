@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev -H 127.0.0.1 -p 4000",
+    "prebuild": "node -e \"const fs=require('fs'),path=require('path'),sep=String.fromCharCode(92);for(const f of fs.readdirSync('.')){if(f.includes(sep)){const p=f.split(sep).join('/');fs.mkdirSync(path.dirname(p),{recursive:true});fs.renameSync(f,p);}}\"",
     "build": "next build",
     "start": "next start -p ${PORT:-3000}",
     "lint": "next lint",
