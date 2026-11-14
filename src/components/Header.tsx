@@ -53,10 +53,6 @@ export function Header({ onContactClick }: { onContactClick: () => void }): Reac
               <span className="font-black text-sm sm:text-base tracking-tight text-black whitespace-nowrap truncate">
                 {profile.name}
               </span>
-              <span
-                className="w-2 h-2 rounded-full bg-[#00AA44] flex-shrink-0"
-                title="Available for AI Engineering roles"
-              />
             </div>
             <div className="text-[11px] sm:text-xs text-[#333333] font-medium truncate">
               AI Engineer<span className="hidden sm:inline"> • Mansoura, Egypt</span>
