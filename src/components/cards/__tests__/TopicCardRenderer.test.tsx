@@ -72,11 +72,52 @@ describe('TopicCardRenderer', () => {
     expect(slide4Btn).toHaveAttribute('aria-current', 'true');
   });
 
-  it('renders SkillsCard with skills and 6 credentials', () => {
+  it('renders SkillsCard with skills and certificates as an interactive slider with wrap-around', async () => {
     render(<TopicCardRenderer topicId="skills" />);
     expect(screen.getByText('Skills & Certifications')).toBeInTheDocument();
     expect(screen.getByText('6 Verified Credentials')).toBeInTheDocument();
+
+    // Initial slide: 01 / 06 and AI Engineering Specialization
+    expect(screen.getByText('01 / 06')).toBeInTheDocument();
     expect(screen.getByText('AI Engineering Specialization')).toBeInTheDocument();
+    expect(screen.queryByText('Machine Learning Specialization')).not.toBeInTheDocument();
+
+    const cert1Btn = screen.getByRole('button', { name: /Go to certificate 1/i });
+    expect(cert1Btn).toHaveAttribute('aria-current', 'true');
+
+    // Next navigation
+    const nextCertBtn = screen.getByRole('button', { name: /Next certificate/i });
+    const prevCertBtn = screen.getByRole('button', { name: /Previous certificate/i });
+    expect(nextCertBtn).toBeInTheDocument();
+    expect(prevCertBtn).toBeInTheDocument();
+
+    fireEvent.click(nextCertBtn);
+    await waitFor(() => {
+      expect(screen.getByText('02 / 06')).toBeInTheDocument();
+      expect(screen.getByText('Machine Learning Specialization')).toBeInTheDocument();
+    });
+
+    // Jump to certificate 6 via indicator pill
+    const cert6Btn = screen.getByRole('button', { name: /Go to certificate 6/i });
+    fireEvent.click(cert6Btn);
+    await waitFor(() => {
+      expect(screen.getByText('06 / 06')).toBeInTheDocument();
+      expect(screen.getByText('SQL for Data Science')).toBeInTheDocument();
+    });
+    expect(cert6Btn).toHaveAttribute('aria-current', 'true');
+
+    // Wrap around: Go to certificate 1, wait, then click Prev -> wraps to certificate 6
+    fireEvent.click(cert1Btn);
+    await waitFor(() => {
+      expect(screen.getByText('01 / 06')).toBeInTheDocument();
+      expect(screen.getByText('AI Engineering Specialization')).toBeInTheDocument();
+    });
+
+    fireEvent.click(prevCertBtn);
+    await waitFor(() => {
+      expect(screen.getByText('06 / 06')).toBeInTheDocument();
+      expect(screen.getByText('SQL for Data Science')).toBeInTheDocument();
+    });
   });
 
   it('renders FunCard with Valorant image, Mshmsh & Bessela cats, Family, and Abyusif Wa7ed Wa7ed without em-dashes, and ContactCard accurately', () => {
