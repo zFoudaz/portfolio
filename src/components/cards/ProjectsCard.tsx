@@ -153,7 +153,7 @@ export function ProjectsCard() {
 
       {/* Interactive Single-Card Slide Display with Drag Support */}
       <div className="relative overflow-hidden min-h-[460px] sm:min-h-[430px]">
-        <AnimatePresence custom={direction} mode="wait">
+        <AnimatePresence custom={direction} initial={false}>
           <motion.div
             key={currentProject.id}
             custom={direction}
