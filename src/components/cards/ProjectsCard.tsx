@@ -14,6 +14,7 @@ function ProjectVisualHeader({ project }: { project: ProjectItem }) {
       href={project.repoUrl}
       target="_blank"
       rel="noreferrer"
+      draggable={false}
       title={`View ${project.title} on GitHub`}
       className="block relative group overflow-hidden border-b-2 border-black bg-[#1a1a1a]"
     >
@@ -32,6 +33,7 @@ function ProjectVisualHeader({ project }: { project: ProjectItem }) {
           src={project.imageUrl}
           alt={project.imageAlt}
           onError={() => setImgFailed(true)}
+          draggable={false}
           className="w-full h-44 sm:h-52 object-cover transition-transform duration-300 group-hover:scale-105 pointer-events-none"
         />
       )}
@@ -53,7 +55,7 @@ const slideVariants = {
     opacity: 1,
     transition: {
       x: { type: 'spring', stiffness: 350, damping: 30 },
-      opacity: { duration: 0.2 },
+      opacity: { duration: 0.18 },
     },
   },
   exit: (dir: number) => ({
@@ -61,7 +63,7 @@ const slideVariants = {
     opacity: 0,
     transition: {
       x: { type: 'spring', stiffness: 350, damping: 30 },
-      opacity: { duration: 0.2 },
+      opacity: { duration: 0.18 },
     },
   }),
 };
@@ -104,8 +106,8 @@ export function ProjectsCard() {
 
       {/* Navigation Controls Bar */}
       <div className="flex items-center justify-between gap-2 bg-[#F5F5F5] p-2.5 sm:p-3 rounded-xl border border-black">
-        {/* Slide Indicator Pills */}
-        <div className="flex items-center gap-1.5 sm:gap-2">
+        {/* Slide Indicator Pills with WCAG 2.5.8 touch target */}
+        <div className="flex items-center gap-0.5 sm:gap-1">
           {projects.map((project, idx) => {
             const isActive = currentIndex === idx;
             return (
@@ -114,20 +116,28 @@ export function ProjectsCard() {
                 type="button"
                 onClick={() => handleSelect(idx)}
                 aria-label={`Go to project ${idx + 1}`}
+                aria-current={isActive ? 'true' : undefined}
                 title={project.title}
-                className={`h-2.5 rounded-full transition-all border border-black cursor-pointer ${
-                  isActive
-                    ? 'w-6 sm:w-8 bg-[#ED1C24] border-[#ED1C24]'
-                    : 'w-2.5 sm:w-3 bg-white hover:bg-black/20'
-                }`}
-              />
+                className="p-1 sm:p-1.5 flex items-center justify-center cursor-pointer min-w-[28px] min-h-[28px]"
+              >
+                <span
+                  className={`h-2.5 rounded-full transition-all border border-black ${
+                    isActive
+                      ? 'w-6 sm:w-8 bg-[#ED1C24] border-[#ED1C24]'
+                      : 'w-2.5 sm:w-3 bg-white hover:bg-black/20'
+                  }`}
+                />
+              </button>
             );
           })}
         </div>
 
         {/* Counter and Prev / Next Arrow Controls */}
         <div className="flex items-center gap-2">
-          <span className="font-mono text-xs font-bold text-black px-2 py-0.5 rounded bg-white border border-black shadow-2xs">
+          <span
+            aria-live="polite"
+            className="font-mono text-xs font-bold text-black px-2 py-0.5 rounded bg-white border border-black shadow-2xs"
+          >
             {String(currentIndex + 1).padStart(2, '0')} / {String(projects.length).padStart(2, '0')}
           </span>
           <button
@@ -151,9 +161,9 @@ export function ProjectsCard() {
         </div>
       </div>
 
-      {/* Interactive Single-Card Slide Display with Drag Support */}
+      {/* Interactive Single-Card Slide Display with Drag Support (mode="wait" prevents CLS stacking) */}
       <div className="relative overflow-hidden min-h-[460px] sm:min-h-[430px]">
-        <AnimatePresence custom={direction} initial={false}>
+        <AnimatePresence custom={direction} mode="wait" initial={false}>
           <motion.div
             key={currentProject.id}
             custom={direction}
@@ -165,9 +175,11 @@ export function ProjectsCard() {
             dragConstraints={{ left: 0, right: 0 }}
             dragElastic={0.2}
             onDragEnd={(_, info) => {
-              if (info.offset.x < -50) {
+              const isSwipeNext = info.offset.x < -50 || info.velocity.x < -300;
+              const isSwipePrev = info.offset.x > 50 || info.velocity.x > 300;
+              if (isSwipeNext) {
                 handleNext();
-              } else if (info.offset.x > 50) {
+              } else if (isSwipePrev) {
                 handlePrev();
               }
             }}

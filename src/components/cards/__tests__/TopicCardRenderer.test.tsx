@@ -20,6 +20,9 @@ describe('TopicCardRenderer', () => {
     expect(screen.getByText('GenLearn')).toBeInTheDocument();
     expect(screen.queryByText('Research Agent with LangGraph')).not.toBeInTheDocument();
 
+    const slide1Btn = screen.getByRole('button', { name: /Go to project 1/i });
+    expect(slide1Btn).toHaveAttribute('aria-current', 'true');
+
     const genlearnImg = screen.getByAltText('GenLearn Project Architecture');
     const genlearnLink = genlearnImg.closest('a');
     expect(genlearnLink).toHaveAttribute('href', 'https://github.com/Gen-Learn');
@@ -36,6 +39,9 @@ describe('TopicCardRenderer', () => {
       expect(screen.getByText('02 / 04')).toBeInTheDocument();
       expect(screen.getByText('Research Agent with LangGraph')).toBeInTheDocument();
     });
+    const slide2Btn = screen.getByRole('button', { name: /Go to project 2/i });
+    expect(slide2Btn).toHaveAttribute('aria-current', 'true');
+    expect(slide1Btn).not.toHaveAttribute('aria-current');
 
     // Jump to slide 3 via indicator pill (PopChoice with Live Demo)
     const slide3Btn = screen.getByRole('button', { name: /Go to project 3/i });
@@ -44,16 +50,17 @@ describe('TopicCardRenderer', () => {
       expect(screen.getByText('03 / 04')).toBeInTheDocument();
       expect(screen.getByText('PopChoice')).toBeInTheDocument();
     });
+    expect(slide3Btn).toHaveAttribute('aria-current', 'true');
 
     const liveDemoLink = screen.getByRole('link', { name: /Live Demo/i });
     expect(liveDemoLink).toHaveAttribute('href', 'https://popchoice.ziyadfouda.site/');
     expect(liveDemoLink).toHaveAttribute('target', '_blank');
 
-    // Wrap around: Go to slide 1, click Prev -> wraps to slide 4 (Study Tracker App)
-    const slide1Btn = screen.getByRole('button', { name: /Go to project 1/i });
+    // Wrap around: Go to slide 1, wait for it, then click Prev -> wraps to slide 4 (Study Tracker App)
     fireEvent.click(slide1Btn);
     await waitFor(() => {
       expect(screen.getByText('01 / 04')).toBeInTheDocument();
+      expect(screen.getByText('GenLearn')).toBeInTheDocument();
     });
 
     fireEvent.click(prevBtn);
@@ -61,6 +68,8 @@ describe('TopicCardRenderer', () => {
       expect(screen.getByText('04 / 04')).toBeInTheDocument();
       expect(screen.getByText('Study Tracker App')).toBeInTheDocument();
     });
+    const slide4Btn = screen.getByRole('button', { name: /Go to project 4/i });
+    expect(slide4Btn).toHaveAttribute('aria-current', 'true');
   });
 
   it('renders SkillsCard with skills and 6 credentials', () => {
