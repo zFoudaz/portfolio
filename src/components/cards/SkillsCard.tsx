@@ -109,10 +109,7 @@ export function SkillsCard() {
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-black pb-3 sm:pb-4">
         <div>
-          <span className="px-3 py-1 rounded-full bg-purple-100 text-purple-900 border border-purple-300 text-xs font-bold uppercase tracking-wider">
-            Technical Stack
-          </span>
-          <h3 className="text-2xl sm:text-3xl font-black text-black mt-2">Skills &amp; Certifications</h3>
+          <h3 className="text-2xl sm:text-3xl font-black text-black">Skills &amp; Certifications</h3>
         </div>
       </div>
 

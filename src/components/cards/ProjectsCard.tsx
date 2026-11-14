@@ -96,10 +96,7 @@ export function ProjectsCard() {
       {/* Card Header */}
       <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-black pb-3 sm:pb-4">
         <div>
-          <span className="px-3 py-1 rounded-full bg-[#ED1C24] text-white text-xs font-bold uppercase tracking-wider">
-            Production AI Systems
-          </span>
-          <h3 className="text-2xl sm:text-3xl font-black text-black mt-2">Engineering Projects</h3>
+          <h3 className="text-2xl sm:text-3xl font-black text-black">Engineering Projects</h3>
         </div>
       </div>
 
