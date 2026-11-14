@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Maximize2, ChevronLeft, ChevronRight } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
 import { PORTFOLIO_DATA } from '@/data/portfolioData';
 import { CertificateItem } from '@/types/portfolio';
 import { ImageLightbox, LightboxImage } from '@/components/ImageLightbox';
@@ -57,7 +57,7 @@ function CertificateVisualHeader({
   );
 }
 
-const slideVariants = {
+const slideVariants: Variants = {
   enter: (dir: number) => ({
     x: dir > 0 ? 60 : -60,
     opacity: 0,
