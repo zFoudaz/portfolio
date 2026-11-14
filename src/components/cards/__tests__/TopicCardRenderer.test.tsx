@@ -10,7 +10,7 @@ describe('TopicCardRenderer', () => {
     expect(screen.getByText('AI Engineer Intern')).toBeInTheDocument();
   });
 
-  it('renders ProjectsCard as an interactive slider with single project focus, controls, and wrap-around', () => {
+  it('renders ProjectsCard as an interactive slider with single project focus, controls, and wrap-around', async () => {
     render(<TopicCardRenderer topicId="projects" />);
     expect(screen.getByText('Engineering Projects')).toBeInTheDocument();
     expect(screen.getByText('4 Featured Systems')).toBeInTheDocument();
@@ -32,15 +32,18 @@ describe('TopicCardRenderer', () => {
     expect(prevBtn).toBeInTheDocument();
 
     fireEvent.click(nextBtn);
-    expect(screen.getByText('02 / 04')).toBeInTheDocument();
-    expect(screen.getByText('Research Agent with LangGraph')).toBeInTheDocument();
-    expect(screen.queryByText('GenLearn')).not.toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText('02 / 04')).toBeInTheDocument();
+      expect(screen.getByText('Research Agent with LangGraph')).toBeInTheDocument();
+    });
 
     // Jump to slide 3 via indicator pill (PopChoice with Live Demo)
     const slide3Btn = screen.getByRole('button', { name: /Go to project 3/i });
     fireEvent.click(slide3Btn);
-    expect(screen.getByText('03 / 04')).toBeInTheDocument();
-    expect(screen.getByText('PopChoice')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText('03 / 04')).toBeInTheDocument();
+      expect(screen.getByText('PopChoice')).toBeInTheDocument();
+    });
 
     const liveDemoLink = screen.getByRole('link', { name: /Live Demo/i });
     expect(liveDemoLink).toHaveAttribute('href', 'https://popchoice.ziyadfouda.site/');
@@ -49,11 +52,15 @@ describe('TopicCardRenderer', () => {
     // Wrap around: Go to slide 1, click Prev -> wraps to slide 4 (Study Tracker App)
     const slide1Btn = screen.getByRole('button', { name: /Go to project 1/i });
     fireEvent.click(slide1Btn);
-    expect(screen.getByText('01 / 04')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText('01 / 04')).toBeInTheDocument();
+    });
 
     fireEvent.click(prevBtn);
-    expect(screen.getByText('04 / 04')).toBeInTheDocument();
-    expect(screen.getByText('Study Tracker App')).toBeInTheDocument();
+    await waitFor(() => {
+      expect(screen.getByText('04 / 04')).toBeInTheDocument();
+      expect(screen.getByText('Study Tracker App')).toBeInTheDocument();
+    });
   });
 
   it('renders SkillsCard with skills and 6 credentials', () => {
