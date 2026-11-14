@@ -142,13 +142,10 @@ export function PortfolioChat(): React.JSX.Element {
                 {/* Greeting & Headline */}
                 <div className="space-y-1.5">
                   <h1 className="text-2xl sm:text-3xl font-black text-black tracking-tight leading-snug">
-                    Hey! I’m <span className="text-[#ED1C24]">{PORTFOLIO_DATA.profile.name}</span> 👋
+                    Hey! I’m <span className="text-[#ED1C24]">{PORTFOLIO_DATA.profile.name}</span>
                   </h1>
                   <p className="text-sm sm:text-base font-bold text-[#333333]">
-                    AI Engineer &amp; Computer Engineering Graduate{' '}
-                    <span className="font-mono text-xs sm:text-sm font-semibold text-[#555555] block sm:inline mt-0.5 sm:mt-0">
-                      (GPA 3.7 • High Honors)
-                    </span>
+                    AI Engineer &amp; Computer Engineering Graduate
                   </p>
                 </div>
 
