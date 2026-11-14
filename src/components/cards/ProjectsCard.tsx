@@ -101,7 +101,6 @@ export function ProjectsCard() {
           </span>
           <h3 className="text-2xl sm:text-3xl font-black text-black mt-2">Engineering Projects</h3>
         </div>
-        <span className="text-xs font-mono font-bold text-[#555555]">4 Featured Systems</span>
       </div>
 
       {/* Navigation Controls Bar */}

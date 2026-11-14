@@ -114,7 +114,6 @@ export function SkillsCard() {
           </span>
           <h3 className="text-2xl sm:text-3xl font-black text-black mt-2">Skills &amp; Certifications</h3>
         </div>
-        <span className="text-xs font-mono font-bold text-[#555555]">6 Verified Credentials</span>
       </div>
 
       {/* Skills Categories Grid */}

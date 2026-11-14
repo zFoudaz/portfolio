@@ -13,7 +13,6 @@ describe('TopicCardRenderer', () => {
   it('renders ProjectsCard as an interactive slider with single project focus, controls, and wrap-around', async () => {
     render(<TopicCardRenderer topicId="projects" />);
     expect(screen.getByText('Engineering Projects')).toBeInTheDocument();
-    expect(screen.getByText('4 Featured Systems')).toBeInTheDocument();
 
     // Initial slide: 01 / 04 and GenLearn
     expect(screen.getByText('01 / 04')).toBeInTheDocument();
@@ -75,7 +74,6 @@ describe('TopicCardRenderer', () => {
   it('renders SkillsCard with skills and certificates as an interactive slider with wrap-around', async () => {
     render(<TopicCardRenderer topicId="skills" />);
     expect(screen.getByText('Skills & Certifications')).toBeInTheDocument();
-    expect(screen.getByText('6 Verified Credentials')).toBeInTheDocument();
 
     // Initial slide: 01 / 06 and AI Engineering Specialization
     expect(screen.getByText('01 / 06')).toBeInTheDocument();
