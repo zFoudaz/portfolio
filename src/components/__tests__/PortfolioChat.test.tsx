@@ -12,16 +12,14 @@ describe('PortfolioChat interactive flow', () => {
     vi.useRealTimers();
   });
 
-  it('renders the upgraded hero welcome card initially with Download CV link and starter prompt chips', () => {
+  it('renders the clean hero welcome card initially with starter prompt chips', () => {
     render(<PortfolioChat />);
-    expect(screen.getByText(/SYSTEM ONLINE/i)).toBeInTheDocument();
-    expect(screen.getByText(/Available for AI Engineering Roles/i)).toBeInTheDocument();
-    const cvLink = screen.getByRole('link', { name: /Download CV \(PDF\)/i });
-    expect(cvLink).toHaveAttribute('href', '/Ziyad_Fouda_Resume.pdf');
+    expect(screen.getByRole('heading', { name: /Hey! I’m Ziyad Fouda/i })).toBeInTheDocument();
     expect(screen.getByText(/How do GenLearn & LangGraph work\?/i)).toBeInTheDocument();
+    expect(screen.getByText(/What are your 4 AI internships\?/i)).toBeInTheDocument();
 
     const avatars = screen.getAllByAltText('Ziyad Fouda');
-    expect(avatars.length).toBeGreaterThanOrEqual(2);
+    expect(avatars.length).toBeGreaterThanOrEqual(1);
     expect(avatars[0]).toHaveAttribute('src', '/images/ziyad.webp');
     expect(screen.queryByText('Engineering Projects')).not.toBeInTheDocument();
     expect(screen.queryByText('Mansoura University')).not.toBeInTheDocument();

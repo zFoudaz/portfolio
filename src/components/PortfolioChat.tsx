@@ -138,81 +138,47 @@ export function PortfolioChat(): React.JSX.Element {
               <Avatar size="sm" />
             </div>
             <div className="space-y-4 max-w-3xl w-full min-w-0">
-              <div className="bg-white p-4 sm:p-7 rounded-2xl sm:rounded-tl-sm border-2 border-black shadow-sm space-y-4">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <div className="flex items-center gap-2">
-                    <span className="px-2 py-0.5 rounded bg-black text-white text-[10px] font-mono font-bold">
-                      SYSTEM ONLINE
-                    </span>
-                    <span className="text-xs text-[#666666] font-medium">
-                      Portfolio AI Assistant
-                    </span>
-                  </div>
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#00AA44]/15 text-[#008833] text-[11px] font-bold border border-[#00AA44]/40">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#00AA44] flex-shrink-0" />
-                    <span>Available for AI Engineering Roles</span>
-                  </div>
-                </div>
-
-                <div className="space-y-1">
-                  <h1 className="text-xl sm:text-2xl font-black text-black tracking-tight">
+              <div className="bg-white p-5 sm:p-8 rounded-2xl sm:rounded-tl-sm border-2 border-black shadow-[4px_4px_0px_#000000] space-y-4 sm:space-y-5">
+                {/* Greeting & Headline */}
+                <div className="space-y-1.5">
+                  <h1 className="text-2xl sm:text-3xl font-black text-black tracking-tight leading-snug">
                     Hey! I’m <span className="text-[#ED1C24]">{PORTFOLIO_DATA.profile.name}</span> 👋
                   </h1>
-                  <p className="text-xs sm:text-sm font-bold text-[#333333]">
-                    AI Engineer &amp; Computer Engineering Graduate (GPA 3.7 • High Honors)
+                  <p className="text-sm sm:text-base font-bold text-[#333333]">
+                    AI Engineer &amp; Computer Engineering Graduate{' '}
+                    <span className="font-mono text-xs sm:text-sm font-semibold text-[#555555] block sm:inline mt-0.5 sm:mt-0">
+                      (GPA 3.7 • High Honors)
+                    </span>
                   </p>
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#333333] leading-relaxed">
+                {/* Bio / Value Statement */}
+                <p className="text-sm sm:text-base text-[#333333] leading-relaxed">
                   I build production LLM applications, multi-agent <strong>LangGraph</strong>{' '}
                   workflows, and grounded <strong>RAG</strong> pipelines. Explore my work using the
                   topic buttons in the dock below, or ask a question directly in the chat!
                 </p>
 
-                {/* Quick Action Links */}
-                <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 pt-1">
-                  <a
-                    href={PORTFOLIO_DATA.profile.resumeUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    download
-                    className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-full bg-black hover:bg-[#ED1C24] text-white text-xs font-bold border-[1.5px] border-black transition-colors shadow-sm"
-                  >
-                    <span>📄</span>
-                    <span>Download CV (PDF)</span>
-                  </a>
-                  <a
-                    href={PORTFOLIO_DATA.profile.githubUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-full bg-[#F5F5F5] hover:bg-[#DCDCDC] text-black text-xs font-bold border-[1.5px] border-black transition-colors"
-                  >
-                    <span>GitHub</span>
-                  </a>
-                  <a
-                    href={PORTFOLIO_DATA.profile.linkedinUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-full bg-[#F5F5F5] hover:bg-[#DCDCDC] text-black text-xs font-bold border-[1.5px] border-black transition-colors"
-                  >
-                    <span>LinkedIn</span>
-                  </a>
-                </div>
-
-                {/* Starter Prompts */}
-                <div className="pt-3 border-t border-[#DCDCDC] space-y-2">
-                  <div className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#666666]">
-                    Try Asking:
+                {/* Starter Prompts 2x2 Grid */}
+                <div className="pt-3 sm:pt-4 border-t-2 border-black/10 space-y-2.5">
+                  <div className="flex items-center gap-1.5 text-xs font-mono font-bold uppercase tracking-wider text-[#555555]">
+                    <span>💬</span>
+                    <span>Try asking:</span>
                   </div>
-                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {STARTER_PROMPTS.map((prompt) => (
                       <button
                         key={prompt}
                         type="button"
                         onClick={() => handleCustomSubmit(prompt)}
-                        className="text-left px-3 py-1.5 rounded-xl sm:rounded-full bg-[#F5F5F5] hover:bg-black hover:text-white text-black text-[11px] sm:text-xs font-semibold border border-black transition-all active:scale-95 cursor-pointer"
+                        className="group text-left px-3.5 py-2.5 rounded-xl bg-[#F5F5F5] hover:bg-black text-black hover:text-white border border-black transition-all active:scale-[0.98] cursor-pointer flex items-center justify-between gap-2 shadow-2xs"
                       >
-                        “{prompt}”
+                        <span className="text-xs sm:text-sm font-semibold truncate">
+                          “{prompt}”
+                        </span>
+                        <span className="text-xs text-[#ED1C24] group-hover:text-white transition-colors flex-shrink-0 font-bold">
+                          →
+                        </span>
                       </button>
                     ))}
                   </div>
