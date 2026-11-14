@@ -188,13 +188,6 @@ export function ProjectsCard() {
               <ProjectVisualHeader project={currentProject} />
               <div className="p-4 sm:p-6 space-y-3">
                 <div className="flex flex-wrap items-center justify-between gap-1.5">
-                  <span
-                    className={`px-2.5 py-0.5 rounded-full ${
-                      currentProject.isAccentBadge ? 'bg-[#ED1C24]' : 'bg-black'
-                    } text-white text-[10px] font-bold uppercase tracking-wider`}
-                  >
-                    {currentProject.badge}
-                  </span>
                   <span className="text-xs font-mono font-bold text-black">
                     {currentProject.techFocus}
                   </span>

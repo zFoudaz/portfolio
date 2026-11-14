@@ -234,9 +234,6 @@ export function SkillsCard() {
                 <CertificateVisualHeader cert={currentCert} onZoom={setSelectedImage} />
                 <div className="p-4 sm:p-5 space-y-2">
                   <div className="flex flex-wrap items-center justify-between gap-1.5">
-                    <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#ED1C24] text-white text-[10px] font-bold uppercase tracking-wider">
-                      {currentCert.badge}
-                    </span>
                     <span className="text-xs font-mono font-bold text-black">
                       {currentCert.issuer}
                     </span>
