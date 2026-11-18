@@ -13,6 +13,12 @@ describe('portfolioData & keyword routing', () => {
     expect(matchTopicFromInput('How can we connect?')).toBe('contact');
     expect(matchTopicFromInput('Tell me something fun')).toBe('fun');
     expect(matchTopicFromInput('Who is Ziyad? education and experience')).toBe('me');
+
+    // Starter prompts
+    expect(matchTopicFromInput('Who is Ziyad?')).toBe('me');
+    expect(matchTopicFromInput('What are your projects?')).toBe('projects');
+    expect(matchTopicFromInput('What are your skills?')).toBe('skills');
+    expect(matchTopicFromInput('How can I contact you?')).toBe('contact');
   });
 
   it('returns null for empty or unrecognized freeform input', () => {

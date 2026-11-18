@@ -15,8 +15,10 @@ describe('PortfolioChat interactive flow', () => {
   it('renders the clean hero welcome card initially with starter prompt chips', () => {
     render(<PortfolioChat />);
     expect(screen.getByRole('heading', { name: /Hey! I’m Ziyad Fouda/i })).toBeInTheDocument();
-    expect(screen.getByText(/How do GenLearn & LangGraph work\?/i)).toBeInTheDocument();
-    expect(screen.getByText(/What are your 4 AI internships\?/i)).toBeInTheDocument();
+    expect(screen.getByText(/Who is Ziyad\?/i)).toBeInTheDocument();
+    expect(screen.getByText(/What are your projects\?/i)).toBeInTheDocument();
+    expect(screen.getByText(/What are your skills\?/i)).toBeInTheDocument();
+    expect(screen.getByText(/How can I contact you\?/i)).toBeInTheDocument();
 
     const avatars = screen.getAllByAltText('Ziyad Fouda');
     expect(avatars.length).toBeGreaterThanOrEqual(1);
@@ -25,9 +27,21 @@ describe('PortfolioChat interactive flow', () => {
     expect(screen.queryByText('Mansoura University')).not.toBeInTheDocument();
   });
 
+  it('triggers the corresponding topic card when a starter prompt chip is clicked', () => {
+    render(<PortfolioChat />);
+    const meChip = screen.getByRole('button', { name: /Who is Ziyad\?/i });
+    fireEvent.click(meChip);
+
+    expect(screen.getByText('Who is Ziyad?')).toBeInTheDocument();
+    act(() => {
+      vi.advanceTimersByTime(400);
+    });
+    expect(screen.getByText('Mansoura University')).toBeInTheDocument();
+  });
+
   it('appends user bubble and renders topic card smoothly when a topic pill is clicked', () => {
     render(<PortfolioChat />);
-    const projectsBtn = screen.getByRole('button', { name: /Projects/i });
+    const projectsBtn = screen.getByRole('button', { name: /💼\s*Projects/i });
     fireEvent.click(projectsBtn);
 
     // User query appears immediately

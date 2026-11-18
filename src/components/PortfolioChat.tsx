@@ -10,10 +10,10 @@ import { TOPIC_OPTIONS, PORTFOLIO_DATA, matchTopicFromInput } from '@/data/portf
 import { TopicId, ChatMessageItem } from '@/types/portfolio';
 
 const STARTER_PROMPTS = [
-  'How do GenLearn & LangGraph work?',
-  'What are your 4 AI internships?',
-  'What is your AI tech stack?',
-  'How can we connect?',
+  'Who is Ziyad?',
+  'What are your projects?',
+  'What are your skills?',
+  'How can I contact you?',
 ];
 
 export function PortfolioChat(): React.JSX.Element {
